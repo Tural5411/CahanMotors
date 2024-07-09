@@ -1,0 +1,216 @@
+﻿@model CahanMotors.Mvc.Models.CarDetailViewModel
+@using CahanMotors.Entities.DTOs
+@using CahanMotors.Mvc.Extensions
+@{ Layout = "_Layout"; }
+
+
+
+<!-- inventory-section -->
+<section class="inventory-section pb-0 layout-radius">
+    <div class="boxcar-container">
+        <div class="boxcar-title-three">
+            <ul class="breadcrumb">
+                <li> <a href="/">Ana səhifə</a></li>
+                <li><a href="/Modeller">Modellər</a></li>
+                <li><span>@Model.CarDto.Car.Name</span></li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="inspection-column v2 col-lg-7 col-md-12 col-sm-12">
+                <div class="inner-column">
+                    <div class="gallery-sec">
+                        <div class="image-column wrap-gallery-box">
+                            <!-- slider section -->
+                            <div class="inner-column inventry-slider-two">
+                                <div class="image-box">
+                                    <figure class="image">
+                                        <a href="~/img/@Model.CarDto.Car.ThumbNail"
+                                           data-fancybox="gallery">
+                                            <img src="~/img/@Model.CarDto.Car.ThumbNail"
+                                                 alt="">
+                                        </a>
+                                    </figure>
+
+                                </div>
+                                @foreach (var item in Model.CarPhotos.Photos)
+                                {
+                    <div class="image-box">
+                        <figure class="image">
+                            <a href="~/img/@item.ImageUrl"
+                               data-fancybox="gallery">
+                                <img src="~/img/@item.ImageUrl"
+                                     alt="">
+                            </a>
+                        </figure>
+
+                    </div>}
+                            </div>
+                            <!-- slider section -->
+                        </div>
+                    </div>
+
+                    <!-- description-sec -->
+                    <div class="description-sec">
+                        <h4 class="title">Model haqqında</h4>
+                        <div class="text two">
+                            @Model.CarDto.Car.Content
+                        </div>
+                        <ul class="des-list">
+                            <li><a href="#"><img src="~/cahanmotors/images/resource/book1-1.svg">Vin Hesabatına baxın</a></li>
+                        </ul>
+                    </div>
+                    <!-- features-sec -->
+                    <div class="features-sec v2">
+                        <h4 class="title">Avtomobilin təchizatı</h4>
+                        <div class="row">
+                            <!-- list-column -->
+                            <div class="list-column col-lg-4 col-md-6 col-sm-12">
+                                <div class="inner-column">
+                                    <h6 class="title">Interior</h6>
+                                    <ul class="feature-list">
+                                        <li><i class="fa-solid fa-check"></i>Yüngül Lehimli disklər</li>
+                                        <li><i class="fa-solid fa-check"></i>ABS</li>
+                                        <li><i class="fa-solid fa-check"></i>Lyuk</li>
+                                        <li><i class="fa-solid fa-check"></i>Arxa görüntü kamerası</li>
+                                        <li><i class="fa-solid fa-check"></i>Dəri salon</li>
+                                        <li><i class="fa-solid fa-check"></i>Ksenon lampalar</li>
+                                        <li><i class="fa-solid fa-check"></i>Park radarı</li>
+                                        <li><i class="fa-solid fa-check"></i>Kondisioner</li>
+                                        <li><i class="fa-solid fa-check"></i>Oturacaqların isidilməsi</li>
+                                        <li><i class="fa-solid fa-check"></i>Oturacaqların ventilyasiyası</li>
+                                        <li><i class="fa-solid fa-check"></i>Yağış sensoru</li>
+                                        <li><i class="fa-solid fa-check"></i>Mərkəzi qapanma</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   
+
+                    <div class="form-box">
+                        <h4 class="title">Kredit kalkulyatoru</h4>
+                        <form class="row">
+                            <div class="col-lg-6">
+                                <div class="form_boxes">
+                                    <label>Vehicle Price (₼)</label>
+                                    <div class="drop-menu">
+                                        <div class="select">
+                                            <span>₼25.000</span>
+                                        </div>
+                                        <input type="hidden" name="gender">
+                                        <ul class="dropdown" style="display: none;">
+                                            <li>₼25.000</li>
+                                            <li>₼25.000</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form_boxes">
+                                    <label>Interest rate (%)</label>
+                                    <div class="drop-menu">
+                                        <div class="select">
+                                            <span>4</span>
+                                        </div>
+                                        <input type="hidden" name="gender">
+                                        <ul class="dropdown" style="display: none;">
+                                            <li>4</li>
+                                            <li>4</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form_boxes">
+                                    <label>Period (month)</label>
+                                    <div class="drop-menu">
+                                        <div class="select">
+                                            <span>36</span>
+                                        </div>
+                                        <input type="hidden" name="gender">
+                                        <ul class="dropdown" style="display: none;">
+                                            <li>36</li>
+                                            <li>36</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form_boxes">
+                                    <label>Down Payment (₼)</label>
+                                    <div class="drop-menu">
+                                        <div class="select">
+                                            <span>4000</span>
+                                        </div>
+                                        <input type="hidden" name="gender">
+                                        <ul class="dropdown" style="display: none;">
+                                            <li>4000</li>
+                                            <li>4000</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-submit">
+                                    <button type="submit" class="theme-btn">
+                                        Hesabla<img src="images/arrow.svg"
+                                                      alt="">
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        <ul class="form-list">
+                            <li><span>Monthly Payment</span>₼687.70</li>
+                            <li><span>Total Amount to Pay</span>₼687.70</li>
+                            <li><span>Total Interest Payment</span>₼687.70</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="side-bar-column v2 v3 col-lg-5 col-md-12 col-sm-12">
+                <div class="inner-column">
+                    <div class="contact-box-two">
+                        <div class="content-box">
+                            <h2>@Model.CarDto.Car.Name</h2>
+                            <div class="text">2.0 D5 PowerPulse Momentum 5dr AWD Geartronic Estate</div>
+                            <ul class="list">
+                                <li>0 kms</li>
+                                <li>@Model.CarDto.Car.FuelType</li>
+                                <li>@Model.CarDto.Car.Transmission</li>
+                            </ul>
+                        </div>
+                        <span>Başlayan qiymət</span>
+                        <h3 class="title">₼ @Model.CarDto.Car.Price</h3>
+                        <div class="btn-box">
+                            <a href="#" class="side-btn">
+                                <i class="fa-solid fa-gauge mx-2"></i>Sınaq
+                                yürüşü üçün müraciət et
+                            </a>
+                        </div>
+                    </div>
+                    <!-- overview-sec -->
+                    <div class="overview-box">
+                        <h4 class="title">Texniki göstəricilər</h4>
+                        <ul class="list">
+                            <li><span><img src="~/cahanmotors/images/resource/insep1-1.svg">Ban</span>@Model.CarDto.Car.Body</li>
+                            <li><span><img src="~/cahanmotors/images/resource/insep1-2.svg">Yürüş</span>0 km</li>
+                            <li><span><img src="~/cahanmotors/images/resource/insep1-3.svg">Yanacaq növü</span>@Model.CarDto.Car.FuelType</li>
+                            <li><span><img src="~/cahanmotors/images/resource/insep1-4.svg">İl</span>@Model.CarDto.Car.Year</li>
+                            <li><span><img src="~/cahanmotors/images/resource/insep1-5.svg">Sürətlər qutusu</span>@Model.CarDto.Car.Transmission</li>
+                            <li>
+                                <span><img src="~/cahanmotors/images/resource/insep1-6.svg">Ötürücü</span>@Model.CarDto.Car.DriveType
+                            </li>
+                            <li><span><img src="~/cahanmotors/images/resource/insep1-8.svg">Həcm</span>@Model.CarDto.Car.EngineSize</li>
+                            <li><span><img src="~/cahanmotors/images/resource/insep1-11.svg">Rəng</span>@Model.CarDto.Car.Color</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- cars-section-three -->
+    <div class="cars-section-three">
+    </div>
+    <!-- End shop section two -->
+</section>
+<!-- End inventory-section -->

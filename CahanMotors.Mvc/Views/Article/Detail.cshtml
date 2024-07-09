@@ -1,0 +1,54 @@
+﻿@model CahanMotors.Mvc.Models.ArticleDetailViewModel
+@using CahanMotors.Entities.DTOs
+@using CahanMotors.Mvc.Extensions
+@{ Layout = "_Layout";
+    ViewBag.Title = Model.ArticleDto.Article.Title;
+    ViewBag.Description = Model.ArticleDto.Article.SeoDescription;
+    ViewBag.Author = Model.ArticleDto.Article.SeoAuthor;
+    ViewBag.Tags = Model.ArticleDto.Article.SeoTags;
+    var listTag = ViewBag.listTags;
+    ViewBag.image = Model.ArticleDto.Article.ThumbNail;
+    string link = $"/Bloq/{Url.FriendlyUrlHelper(Model.ArticleDto.Article.Title).ToLower().ToString()}/{Model.ArticleDto.Article.Id}";
+    ViewBag.seolink = link;
+    ViewBag.datetime = Model.ArticleDto.Article.CreatedDate;
+    ViewBag.modifiedtime = Model.ArticleDto.Article.ModifiedDate; }
+
+
+
+<!-- blog section five -->
+<section class="blog-section-five layout-radius">
+    <div class="boxcar-container">
+        <div class="boxcar-title wow fadeInUp">
+            <h2>@Model.ArticleDto.Article.Title</h2>
+            <ul class="post-info">
+                <li style="margin-right: 5px;">@Model.ArticleDto.Article.CreatedDate.ToShortDateString()</li>
+                <li><i style="margin-right: 5px" class="fas fa-eye"></i>@Model.ArticleDto.Article.ViewsCount</li>
+            </ul>
+        </div>
+    </div>
+    <div class="right-box">
+        <div class="large-container">
+            <div class="content-box">
+                <figure class="outer-image"><img src="~/img/@Model.ArticleDto.Article.ThumbNail" alt="@Model.ArticleDto.Article.Title | CahanMotors"></figure>
+                <div class="right-box-two">
+                    <h4 class="title">@Model.ArticleDto.Article.Title</h4>
+                    <div class="text">
+                        @Html.Raw(Model.ArticleDto.Article.Content)
+                    </div>
+                </div>
+                <div class="social-section">
+                    <div class="inner-column">
+                        <ul class="social-icons">
+                            <li>Etiketlər:</li>
+                            @foreach (var item in listTag)
+                            {
+                                <li><a href="#" rel="@item">@item</a></li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End blog section five -->
