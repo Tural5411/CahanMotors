@@ -10,9 +10,16 @@ namespace CahanMotors.Mvc.AutoMapper.Profiles
     {
         public ViewModelsProfile()  
         {
+
+            CreateMap<QuestionAddViewModel, QuestionAddDto>();
+            CreateMap<QuestionUpdateDto, QuestionUpdateViewModel>().ReverseMap();
+
+            CreateMap<SliderAddViewModel, SliderAddDto>();
             CreateMap<CarAddViewModel, CarAddDto>();
             CreateMap<CarAddDto, CarAddViewModel>();
             CreateMap<CarUpdateDto, CarUpdateViewModel>().ReverseMap();
+            CreateMap<CarBrendModelUpdateDto, CarBrendModelUpdateViewModel>().ReverseMap();
+            CreateMap<SliderUpdateDto, SliderUpdateViewModel>().ReverseMap();
 
             CreateMap<PhotoAddDto, PhotoAddViewModel>().ReverseMap();
 

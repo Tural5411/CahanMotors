@@ -22,6 +22,10 @@ namespace CahanMotors.Services.AutoMapper.Profiles
             CreateMap<CarAddDto, Car>().ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(x => DateTime.Now));
             CreateMap<CarUpdateDto, Car>().ForMember(dest => dest.ModifiedDate, opt => opt.MapFrom(x => DateTime.Now));
             CreateMap<Car, CarUpdateDto>();
+
+            CreateMap<CarBrendModelAddDto, CarBrendModel>().ForMember(dest => dest.CreatedDate, opt => opt.MapFrom(x => DateTime.Now));
+            CreateMap<CarBrendModelDto, CarBrendModel>().ForMember(dest => dest.ModifiedDate, opt => opt.MapFrom(x => DateTime.Now));
+            CreateMap<CarBrendModel, CarBrendModelUpdateDto>();
         }
     }
 }

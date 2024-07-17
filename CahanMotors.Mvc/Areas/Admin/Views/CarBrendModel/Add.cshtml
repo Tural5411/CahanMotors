@@ -1,0 +1,35 @@
+﻿@model CahanMotors.Mvc.Areas.Admin.Models.CarBrendModelAddViewModel 
+
+<form asp-action="Add" asp-controller="Question" method="post" enctype="multipart/form-data" id="form-team-add">
+    <input type="hidden" name="IsValid" value="@ViewData.ModelState.IsValid.ToString()" />
+    <div asp-validation-summary="All" class="text-danger" id="validation-summary" aria-hidden="true" style="display: none;"></div>
+    
+    <div class="form-group">
+        <label asp-for="ParentId">Üst kateqoriya</label>
+        @if (ViewBag.brendModels != null)
+        {
+            @Html.DropDownList("ParentId", new SelectList(ViewBag.brendModels, "Id", "Name"))
+        }
+        <span class="text-danger" asp-validation-for="ParentId"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input class="form-control" asp-for="Name" />
+        <span class="text-danger" asp-validation-for="Name"></span>
+    </div>
+    <div class="form-group form-check">
+        <input type="checkbox" id="isMain" class="form-check-input" asp-for="IsBrand" onclick="document.getElementById('ParentId').disabled = this.checked;" />
+        <label asp-for="IsBrand" class="form-check-label">Yeni Markadırsa klik et modeldirsə boş burax</label>
+        <span class="text-danger" asp-validation-for="IsBrand"></span>
+    </div>
+  
+    <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" asp-for="IsActive" />
+        <label asp-for="IsActive" class="form-check-label"></label>
+        <span class="text-danger" asp-validation-for="IsActive"></span>
+    </div>
+    <div class="form-group">
+        <a asp-action="Index" asp-controller="Question" asp-area="Admin" class="btn btn-danger btn-block"><span class="fas fa-times"></span>Ləğv et</a>
+        <button type="submit" class="btn btn-primary btn-block"><span class="fas fa-save"></span>Yadda saxla</button>
+    </div>
+</form>

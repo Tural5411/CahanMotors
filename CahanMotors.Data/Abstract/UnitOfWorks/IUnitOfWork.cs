@@ -11,6 +11,7 @@ namespace CahanMotors.Data.Abstract.UnitOfWorks
         IQuestionRepository Questions { get; }
         ISliderRepository Sliders { get; }
         IArticleRepository Articles { get; }
+        ICarBrendModelRepository CarBrendModels { get; }
         Task<int> SaveAsync();
     }
 }

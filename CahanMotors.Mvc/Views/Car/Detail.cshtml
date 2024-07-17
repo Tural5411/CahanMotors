@@ -1,9 +1,19 @@
 ﻿@model CahanMotors.Mvc.Models.CarDetailViewModel
 @using CahanMotors.Entities.DTOs
 @using CahanMotors.Mvc.Extensions
-@{ Layout = "_Layout"; }
 
 
+@{ Layout = "_LayoutCar";
+    ViewBag.Title = Model.CarDto.Car.Name;
+    ViewBag.Description = Model.CarDto.Car.Content;
+    ViewBag.Author = "Cahan Motors";
+    var listTag = ViewBag.listTags;
+    ViewBag.image = Model.CarDto.Car.ThumbNail;
+    string link = $"/Bloq/{Url.FriendlyUrlHelper(Model.CarDto.Car.Name).ToLower().ToString()}/{Model.CarDto.Car.Id}";
+    ViewBag.seolink = link;
+    ViewBag.datetime = Model.CarDto.Car.CreatedDate;
+    ViewBag.modifiedtime = Model.CarDto.Car.ModifiedDate;
+}
 
 <!-- inventory-section -->
 <section class="inventory-section pb-0 layout-radius">
@@ -51,35 +61,30 @@
 
                     <!-- description-sec -->
                     <div class="description-sec">
-                        <h4 class="title">Model haqqında</h4>
-                        <div class="text two">
+                        <h4 class="title">Komplektasiya</h4>
+                        <div class="text two text-break text-justify">
                             @Model.CarDto.Car.Content
                         </div>
-                        <ul class="des-list">
-                            <li><a href="#"><img src="~/cahanmotors/images/resource/book1-1.svg">Vin Hesabatına baxın</a></li>
-                        </ul>
                     </div>
                     <!-- features-sec -->
+                    @{
+                        List<String> listStrLineElements;
+
+                        listStrLineElements = @Model.CarDto.Car.TechnicalParameters.Split('•').ToList();
+                        ViewBag.listTags = listStrLineElements;
+                    }
                     <div class="features-sec v2">
-                        <h4 class="title">Avtomobilin təchizatı</h4>
+                        <h4 class="title">Texniki göstəricilər</h4>
                         <div class="row">
                             <!-- list-column -->
-                            <div class="list-column col-lg-4 col-md-6 col-sm-12">
+                            <div class="list-column col-lg-5 col-md-6 col-sm-12">
                                 <div class="inner-column">
-                                    <h6 class="title">Interior</h6>
                                     <ul class="feature-list">
-                                        <li><i class="fa-solid fa-check"></i>Yüngül Lehimli disklər</li>
-                                        <li><i class="fa-solid fa-check"></i>ABS</li>
-                                        <li><i class="fa-solid fa-check"></i>Lyuk</li>
-                                        <li><i class="fa-solid fa-check"></i>Arxa görüntü kamerası</li>
-                                        <li><i class="fa-solid fa-check"></i>Dəri salon</li>
-                                        <li><i class="fa-solid fa-check"></i>Ksenon lampalar</li>
-                                        <li><i class="fa-solid fa-check"></i>Park radarı</li>
-                                        <li><i class="fa-solid fa-check"></i>Kondisioner</li>
-                                        <li><i class="fa-solid fa-check"></i>Oturacaqların isidilməsi</li>
-                                        <li><i class="fa-solid fa-check"></i>Oturacaqların ventilyasiyası</li>
-                                        <li><i class="fa-solid fa-check"></i>Yağış sensoru</li>
-                                        <li><i class="fa-solid fa-check"></i>Mərkəzi qapanma</li>
+                                        @foreach (var item in listStrLineElements)
+                                        {
+                                            <li><i class="fa-solid fa-check"></i>@item</li>
+                                        }
+                                       
                                     </ul>
                                 </div>
                             </div>
@@ -172,9 +177,9 @@
                     <div class="contact-box-two">
                         <div class="content-box">
                             <h2>@Model.CarDto.Car.Name</h2>
-                            <div class="text">2.0 D5 PowerPulse Momentum 5dr AWD Geartronic Estate</div>
+                            <div class="text"></div>
                             <ul class="list">
-                                <li>0 kms</li>
+                                <li>0 km</li>
                                 <li>@Model.CarDto.Car.FuelType</li>
                                 <li>@Model.CarDto.Car.Transmission</li>
                             </ul>
@@ -182,7 +187,7 @@
                         <span>Başlayan qiymət</span>
                         <h3 class="title">₼ @Model.CarDto.Car.Price</h3>
                         <div class="btn-box">
-                            <a href="#" class="side-btn">
+                            <a href="/sinaq" class="side-btn">
                                 <i class="fa-solid fa-gauge mx-2"></i>Sınaq
                                 yürüşü üçün müraciət et
                             </a>

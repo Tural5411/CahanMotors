@@ -1,9 +1,26 @@
 ﻿@{ bool isHomePage = Context.Request.Path == "/"; }
+@using Microsoft.Extensions.Options
+@using CahanMotors.Entities.Concrete
+@inject IOptionsSnapshot<WebsiteInfo> WebsiteInfo
+@{
+    var websiteInfo = WebsiteInfo.Value;
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>CAHAN MOTORS</title>
+    <title>@websiteInfo.Title</title>
+    @*<meta name="google-site-verification" content="AUgCRlVrxoge2SoTRNJVHgB8j9uXwHSL_XEPchHCFVk" />*@
+    <meta property="og:title" name="og:title" content="@websiteInfo.Title" />
+    <meta name="description" content="@websiteInfo.SeoDescription">
+    <meta property="og:description" content="@websiteInfo.SeoDescription">
+    <meta property="og:url" content="https://cahanmotors.az/" />
+    <meta property="og:site_name" content="Digitalist" />
+    <meta property="og:locale" content="az_AZ" />
+    <meta name="keywords" content="@websiteInfo.SeoTags" />
+    <meta property="og:image:type" content="image/png" />
+    <link rel="canonical" href="https://cahanmotors.az/">
+    <meta name="author" content="@websiteInfo.SeoAuthor">
     <!-- Stylesheets -->
     <link href="~/cahanmotors/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="~/cahanmotors/css/slick-theme.css">
@@ -11,17 +28,14 @@
     <link href="~/cahanmotors/css/mmenu.css" rel="stylesheet">
     <link href="~/cahanmotors/css/style.css" rel="stylesheet">
 
-    <link rel="shortcut icon" href="~/cahanmotors/images/favicon.png" type="image/x-icon">
-    <link rel="icon" href="~/cahanmotors/images/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="~/img/cahancolorlogo.png" type="image/x-icon">
+    <link rel="icon" href="~/img/cahancolorlogo.png" type="image/x-icon">
     <!-- Responsive -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
-    <!--[if lt IE 9]><script src="~/cahanmotors/js/respond.js"></script><![endif]-->
 </head>
 
 <body>
-
     <div class="boxcar-wrapper">
         <!-- Main Header-->
         @if (isHomePage)
@@ -34,9 +48,6 @@
                 <div class="logo st-logo">
                     <a href="/"><img width="150" src="~/cahanmotors/images/cahanwhite.png" alt="" title="Boxcar"></a>
                 </div>
-
-
-
                 <div class="right-box">
                     <div class="nav-out-bar">
                         <nav class="nav main-menu">
@@ -198,11 +209,11 @@ else
                                         <h4 class="widget-title">Lazımi linklər</h4>
                                         <div class="widget-content">
                                             <ul class="user-links style-two">
-                                                <li><a href="#">Haqqımızda</a></li>
-                                                <li><a href="#">Xəbərlər</a></li>
-                                                <li><a href="#">Sınaq yürüşü</a></li>
-                                                <li><a href="#">FAQs</a></li>
-                                                <li><a href="#">Bizimlə əlaqə</a></li>
+                                                <li><a href="/haqqimizda">Haqqımızda</a></li>
+                                                <li><a href="/bloq">Xəbərlər</a></li>
+                                                <li><a href="/sinaq">Sınaq yürüşü</a></li>
+                                                <li><a href="/modeller">Modellər</a></li>
+                                                <li><a href="/elaqe">Bizimlə əlaqə</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -273,6 +284,7 @@ else
     <script src="~/cahanmotors/js/knob.js"></script>
     <script src="~/cahanmotors/js/mmenu.js"></script>
     <script src="~/cahanmotors/js/main.js"></script>
+    @await Component.InvokeAsync("NToastNotify")
 </body>
 
 <!-- Mirrored from creativelayers.net/themes/boxcar-html/index-9.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 23 Jun 2024 14:02:03 GMT -->

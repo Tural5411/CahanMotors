@@ -1,0 +1,108 @@
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using NToastNotify;
+using CahanMotors.Entities.ComplexTypes;
+using CahanMotors.Entities.Concrete;
+using CahanMotors.Entities.DTOs;
+using CahanMotors.Mvc.Areas.Admin.Helpers.Abstract;
+using CahanMotors.Mvc.Areas.Admin.Models;
+using CahanMotors.Services.Abstract;
+using CahanMotors.Shared.Utilities.Results.ComplexTypes;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.Json;
+using System.Threading.Tasks;
+
+namespace CahanMotors.Mvc.Areas.Admin.Controllers
+{
+    [Area("Admin")]
+    public class CarBrendModelController : BaseController
+    {
+        private readonly ICarBrendModelService _carService;
+        private readonly IToastNotification _toastNotification;
+
+        public CarBrendModelController(ICarBrendModelService carService, IToastNotification toastNotification, UserManager<User> userManager, IMapper mapper, IImageHelper imageHelper) : base(userManager, mapper, imageHelper)
+        {
+            _carService = carService;
+            _toastNotification = toastNotification;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var result = await _carService.GetAll();
+            return View(result.Data);
+        }
+        [HttpGet]
+        public IActionResult Add()
+        {
+            var result = _carService.GetAllByNonDeletedAndActive();
+            ViewBag.brendModels = result.Result.Data.CarBrendModels.Where(x=>x.ParentId==0);
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Add(CarBrendModelAddDto carAddDto)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _carService.Add(carAddDto, LoggedInUser.UserName);
+                if (result.ResultStatus == ResultStatus.Succes)
+                {
+                    _toastNotification.AddSuccessToastMessage(result.Message, new ToastrOptions
+                    {
+                        Title = "Uğurlu əməliyyat"
+                    });
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError("", result.Message);
+                }
+            }
+            return View(carAddDto);
+        }
+        [HttpGet]
+        public async Task<IActionResult> Update(int videoId)
+        {
+            var result = await _carService.GetCarBrendModelUpdateDto(videoId);
+            if (result.ResultStatus == ResultStatus.Succes)
+            {
+                var videoUpdateViewModel = Mapper.Map<CarBrendModelUpdateViewModel>(result.Data);
+                return View(videoUpdateViewModel);
+            }
+            return NotFound();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Update(CarBrendModelUpdateViewModel videoUpdateViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                
+                var videoUpdateDto = Mapper.Map<CarBrendModelUpdateDto>(videoUpdateViewModel);
+                var result = await _carService.Update(videoUpdateDto, LoggedInUser.UserName);
+                if (result.ResultStatus == ResultStatus.Succes)
+                {
+                    _toastNotification.AddSuccessToastMessage(result.Message, new ToastrOptions
+                    {
+                        Title = "Uğurlu əməliyyat",
+                        CloseButton = true
+                    });
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError("", result.Message);
+                }
+            }
+            return View(videoUpdateViewModel);
+        }
+        [HttpPost]
+        public async Task<JsonResult> Delete(int videoId)
+        {
+            var result = await _carService.Delete(videoId, LoggedInUser.UserName);
+            var deletedVideo = JsonSerializer.Serialize(result);
+            return Json(deletedVideo);
+        }
+    }
+}

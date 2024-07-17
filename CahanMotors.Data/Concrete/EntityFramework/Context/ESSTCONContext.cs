@@ -8,6 +8,7 @@ namespace CahanMotors.Data.Concrete.EntityFramework.Context
     public class CahanMotorsContext : IdentityDbContext<User, Role, int, UserClaim, UserRole, UserLogin, RoleClaim, UserToken>
     {
         public DbSet<Car> Cars { get; set; }
+        public DbSet<CarBrendModel> CarBrendModels { get; set; }
         public DbSet<Article> Articles { get; set; }
         public DbSet<CarPhotos> CarPhotos { get; set; }
         public DbSet<Registers> Registers { get; set; }
@@ -25,6 +26,7 @@ namespace CahanMotors.Data.Concrete.EntityFramework.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new ArticleMap());
+            modelBuilder.ApplyConfiguration(new CarBrendModelMap());
             modelBuilder.ApplyConfiguration(new CarMap());
             modelBuilder.ApplyConfiguration(new SliderMap());
             modelBuilder.ApplyConfiguration(new RegistersMap());

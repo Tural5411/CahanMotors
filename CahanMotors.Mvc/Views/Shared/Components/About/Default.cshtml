@@ -1,9 +1,6 @@
 ﻿@using Microsoft.Extensions.Options
 @using CahanMotors.Entities.Concrete
-@inject IOptionsSnapshot<AboutUsPageInfo> about
-@{
-    var item = about.Value;
-}
+@model CahanMotors.Mvc.Models.AboutViewModel
 <!-- about-inner-one -->
 <section class="about-inner-one layout-radius">
     <div class="upper-box">
@@ -22,7 +19,7 @@
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="content-box">
                         <div class="text">
-                          @item.Content
+                            @Model.AboutUsPageInfo.Content
                         </div>
                     </div>
                 </div>
@@ -36,40 +33,21 @@
                 <div class="exp-block col-md-2 col-sm-12">
                     <div class="inner-box">
                         <div class="exp-box">
-                            <h2 class="title">10</h2>
+                            <h2 class="title">28</h2>
                             <div class="text">
                                 illik fəaliyyət
                             </div>
-                        </div>
-                        <div class="image-box">
-                            <figure class="image"><img src="~/cahanmotors/images/resource/about-inner1-1.jpg" alt=""></figure>
                         </div>
                     </div>
                 </div>
                 <div class="image-block style-center col-md-5 col-sm-12">
                     <div class="image-box">
-                        <figure class="image"><img src="~/cahanmotors/images/resource/about-inner1-2.jpg" alt=""></figure>
+                        <figure class="image"><img src="~/img/1240625438.webp" alt=""></figure>
                     </div>
                 </div>
                 <div class="image-block col-md-5 col-sm-12">
                     <div class="image-box two">
-                        <figure class="image"><img src="~/cahanmotors/images/resource/about-inner1-3.jpg" alt=""></figure>
-                    </div>
-                    <div class="row box-double-img">
-                        <div class="image-block col-lg-5 col-5">
-                            <div class="image-box">
-                                <figure class="image">
-                                    <img src="~/cahanmotors/images/resource/about-inner1-4.jpg" alt="">
-                                </figure>
-                            </div>
-                        </div>
-                        <div class="image-block col-lg-7 col-7">
-                            <div class="image-box">
-                                <figure class="image">
-                                    <img src="~/cahanmotors/images/resource/about-inner1-5.jpg" alt="">
-                                </figure>
-                            </div>
-                        </div>
+                        <figure class="image"><img src="~/img/q3pro.webp" alt=""></figure>
                     </div>
                 </div>
             </div>
@@ -113,9 +91,9 @@
                             </svg>
                         </div>
                         <div class="content-box">
-                            <h6 class="title">Avtomobillərə rəsmi zəmanət</h6>
+                            <h6 class="title">Rəsmi nümayəndə</h6>
                             <div class="text">
-                                Şirkət atomobilləri 5 il və ya 150 000 km zəmanət ilə təmin edir.
+                                Siz Avropa standartlarına cavab verən avtomobillər alırsınız.
                             </div>
                         </div>
                     </div>
@@ -152,11 +130,9 @@
                             </svg>
                         </div>
                         <div class="content-box">
-                            <h6 class="title">Ən sərfəli barter şərtləri ilə</h6>
+                            <h6 class="title">Zəmanət</h6>
                             <div class="text">
-                                CAHAN MOTORS Azərbaycan istənilən avtomobil ilə sərfəli barter
-                                imkanını
-                                təklif edir.
+                                Avtomobillərə 5 il və ya 150 000 km-ə qədər zəmanət verilir.
                             </div>
                         </div>
                     </div>
@@ -194,10 +170,9 @@
                             </svg>
                         </div>
                         <div class="content-box">
-                            <h6 class="title">Servisin peşəkar əməkdaşları</h6>
+                            <h6 class="title">Servis xidməti</h6>
                             <div class="text">
-                                CAHAN MOTORS avtomobilinizin qayğısını rəsmi servisimizə etibar
-                                edin.
+                                Peşəkar ustalarımız tərəfindən servis xidməti mövcuddur.
                             </div>
                         </div>
                     </div>
@@ -219,8 +194,8 @@
                             </svg>
                         </div>
                         <div class="content-box">
-                            <h6 class="title">Orijinal ehtiyat hissələrin təmini</h6>
-                            <div class="text">Avtomobilin ömrünü orijinal ehtiyat hissələri ilə uzadın.</div>
+                            <h6 class="title">Ehtiyat hissələr</h6>
+                            <div class="text">Avtomobillərin bütün orijinal ehtiyat hissələri mövcuddur.</div>
                         </div>
                     </div>
                 </div>
@@ -314,27 +289,21 @@
                     </div>
                     <ul class="widget-accordion wow fadeInUp">
                         <!--Block-->
-                        <li class="accordion block active-block">
-                            <div class="acc-btn active">
-                                Does BoxCar own the cars I see online or are they owned
-                                by other.<div class="icon fa fa-plus"></div>
-                            </div>
-                            <div class="acc-content current">
-                                <div class="content">
-                                    <div class="text">
-                                        Cras vitae ac nunc orci. Purus amet tortor non at
-                                        phasellus ultricies hendrerit.
-                                        Eget a, sit morbi nunc sit id massa. Metus, scelerisque volutpat nec sit
-                                        vel donec. Sagittis,
-                                        id volutpat erat vel.
+                        @foreach (var item in Model.Questions.Questions)
+                        {
+                            <li class="accordion block active-block">
+                                <div class="acc-btn active">
+                                    @item.Question<div class="icon fa fa-plus"></div>
+                                </div>
+                                <div class="acc-content current">
+                                    <div class="content">
+                                        <div class="text">
+                                            @item.Answer
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </li>
-
-                  
-
-                       
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>

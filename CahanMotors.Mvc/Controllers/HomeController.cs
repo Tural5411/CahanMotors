@@ -1,6 +1,5 @@
 ﻿using CahanMotors.Entities.Concrete;
 using CahanMotors.Entities.DTOs;
-//using CahanMotors.Mvc.Models;
 using CahanMotors.Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;

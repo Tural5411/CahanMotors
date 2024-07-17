@@ -38,6 +38,7 @@ namespace CahanMotors.Services.Extensions
             });
             serviceCollection.AddScoped<IUnitOfWork, UnitOfWork>();
             serviceCollection.AddScoped<IQuestionService, QuestionManager>();
+            serviceCollection.AddScoped<ICarBrendModelService, CarBrendModelManager>();
             serviceCollection.AddScoped<IArticleService, ArticleManager>();
             serviceCollection.AddScoped<ISliderService, SliderManager>();
             serviceCollection.AddScoped<ICarService, CarManager>();

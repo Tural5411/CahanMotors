@@ -3,42 +3,7 @@
 }
 
 <!-- boxcar-banner-section-two -->
-<section class="boxcar-banner-section-four">
-    <div class="banner-slider-v4">
-        <div class="banner-slide">
-            <img src="cahanmotors/images/banner/bg-4-1.jpg" alt="">
-            <div class="right-box">
-                <div class="boxcar-container">
-                    <div class="content-box">
-                        <span class="sub-title" data-animation-in="fadeInDown">
-                            ₼1204<small>
-                                /
-                                aylıq
-                            </small>
-                        </span>
-                        <h1 data-animation-in="fadeInUp" data-delay-in="0.2">Bestune</h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="banner-slide">
-            <img src="cahanmotors/images/banner/bg-4-1.jpg" alt="">
-            <div class="right-box">
-                <div class="boxcar-container">
-                    <div class="content-box">
-                        <span class="sub-title" data-animation-in="fadeInDown">
-                            ₼1222<small>
-                                /
-                                Month
-                            </small>
-                        </span>
-                        <h1 data-animation-in="fadeInUp" data-delay-in="0.2">Hongqi</h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+@await Component.InvokeAsync("Slider")
 <!-- End boxcar-banner-section -->
 <!-- models-section -->
 @await Component.InvokeAsync("Car")
@@ -52,21 +17,7 @@
                 <div class="inner-column">
                     <div class="image-box">
                         <figure class="image">
-                            <a href="#"><img src="cahanmotors/images/zxauto1.jpg" alt=""></a>
-                        </figure>
-                        <figure class="image-2">
-                            <a href="#">
-                                <img src="cahanmotors/images/bestune1cahan.jpg"
-                                     alt="">
-                            </a>
-                        </figure>
-                    </div>
-                    <div class="image-box">
-                        <figure class="image-3">
-                            <a href="#">
-                                <img src="cahanmotors/images/hongi1.jpg"
-                                     alt="">
-                            </a>
+                            <a href="#"><img src="~/img/q3pro.webp" alt="cahan motors q3"></a>
                         </figure>
                     </div>
                 </div>
@@ -76,21 +27,19 @@
                     <div class="boxcar-title wow fadeInUp">
                         <h2>Cahan motors haqqında</h2>
                         <div class="text">
-                            We are committed to providing our customers with exceptional service,
-                            competitive pricing, and a wide range of.
+                            “Cahan Holdinq” Kommersiya Şirkətlər İttifaqına daxil olan “Cahan Motors” MMC şirkəti artıq 28 ildir ki, Azərbaycanın avtomobil bazarında fəaliyyət göstərir. “Cahan Motors” MMC dünyanın ən çox tanınmış brendlərindən olan Almaniyanın “OPEL” şirkətinin, Çinin ilk avtomobil şirkəti “FAW Group”-a aid olan premium sinif “HONGQI” və “BESTUNE” avtomobillərinin Azərbaycandakı rəsmi distribütorudur.
                         </div>
                     </div>
                     <ul class="list-style-one wow fadeInUp" data-wow-delay="100ms">
                         <li>
-                            <i class="fa-solid fa-check"></i>We are the UK’s largest provider, with more patrols
-                            in more places
+                            <i class="fa-solid fa-check"></i>Avtomobillərin rəsmi nümayəndəsi
                         </li>
-                        <li><i class="fa-solid fa-check"></i>You get 24/7 roadside assistance</li>
-                        <li><i class="fa-solid fa-check"></i>We fix 4 out of 5 cars at the roadside</li>
+                        <li><i class="fa-solid fa-check"></i>Servis xidmətləri və ehtiyat hissələri</li>
+                        <li><i class="fa-solid fa-check"></i>Avtomobillərə 5 il rəsmi zəmanət</li>
                     </ul>
-                    <a href="#" class="read-more wow fadeInUp" data-wow-delay="200ms">
+                    <a href="/elaqe" class="read-more wow fadeInUp" data-wow-delay="200ms">
                         Əlaqə<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"
-                                        fill="none">
+                                  fill="none">
                             <g clip-path="url(#clip0_634_2156)">
                                 <path d="M13.6106 0H5.05509C4.84013 0 4.66619 0.173943 4.66619 0.388901C4.66619 0.603859 4.84013 0.777802 5.05509 0.777802H12.6719L0.113453 13.3362C-0.0384687 13.4881 -0.0384687 13.7342 0.113453 13.8861C0.189396 13.962 0.288927 14 0.388422 14C0.487917 14 0.587411 13.962 0.663391 13.8861L13.2218 1.3277V8.94447C13.2218 9.15943 13.3957 9.33337 13.6107 9.33337C13.8256 9.33337 13.9996 9.15943 13.9996 8.94447V0.388901C13.9995 0.173943 13.8256 0 13.6106 0Z"
                                       fill="white" />
@@ -135,9 +84,9 @@
                         </svg>
                     </div>
                     <div class="content-box">
-                        <h6 class="title">Avtomobillərə rəsmi zəmanət</h6>
+                        <h6 class="title">Rəsmi nümayəndə</h6>
                         <div class="text">
-                            Şirkət atomobilləri 5 il və ya 150 000 km zəmanət ilə təmin edir.
+                            Siz Avropa standartlarına cavab verən avtomobillər alırsınız.
                         </div>
                     </div>
                 </div>
@@ -169,11 +118,9 @@
                         </svg>
                     </div>
                     <div class="content-box">
-                        <h6 class="title">Ən sərfəli barter şərtləri ilə</h6>
+                        <h6 class="title">Zəmanət</h6>
                         <div class="text">
-                            CAHAN MOTORS Azərbaycan istənilən avtomobil ilə sərfəli barter
-                            imkanını
-                            təklif edir.
+                            Avtomobillərə 5 il və ya 150 000 km-ə qədər zəmanət verilir.
                         </div>
                     </div>
                 </div>
@@ -201,9 +148,9 @@
                         </svg>
                     </div>
                     <div class="content-box">
-                        <h6 class="title">Servisin peşəkar əməkdaşları</h6>
+                        <h6 class="title">Servis xidməti</h6>
                         <div class="text">
-                            CAHAN MOTORS avtomobilinizin qayğısını rəsmi servisimizə etibar edin.
+                            Peşəkar ustalarımız tərəfindən servis xidməti mövcuddur.
                         </div>
                     </div>
                 </div>
@@ -225,8 +172,8 @@
                         </svg>
                     </div>
                     <div class="content-box">
-                        <h6 class="title">Orijinal ehtiyat hissələrin təmini</h6>
-                        <div class="text">Avtomobilin ömrünü orijinal ehtiyat hissələri ilə uzadın.</div>
+                        <h6 class="title">Ehtiyat hissələr</h6>
+                        <div class="text">Avtomobillərin bütün orijinal ehtiyat hissələri mövcuddur.</div>
                     </div>
                 </div>
             </div>
@@ -238,7 +185,7 @@
 @await Component.InvokeAsync("Articles")
 <!-- End news-section -->
 <!-- Calculator Section -->
-<section style="background-image: url(/cahanmotors/images/calculator.jpg" class="calculator-section-home9">
+<section style="background-image: url(/img/kk244125323.webp" class="calculator-section-home9">
     <div class="boxcar-container">
         <div class="row">
             <div class="col-xl-5 col-lg-6 col-12">

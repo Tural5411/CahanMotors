@@ -20,7 +20,11 @@ namespace CahanMotors.Mvc
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    webBuilder.UseStartup<Startup>()
+                        .ConfigureKestrel(serverOptions =>
+                        {
+                            serverOptions.Limits.MaxRequestBodySize = 52428800; 
+                        });
                 });
     }
 }

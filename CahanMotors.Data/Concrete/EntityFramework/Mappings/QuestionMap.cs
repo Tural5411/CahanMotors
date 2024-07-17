@@ -20,7 +20,7 @@ namespace CahanMotors.Data.Concrete.EntityFramework.Mappings
             builder.Property(c => c.CreatedDate).IsRequired();
             builder.Property(c => c.ModifiedDate).IsRequired();
 
-            builder.ToTable("Categories");
+            builder.ToTable("Questions");
         }
     }
 }
