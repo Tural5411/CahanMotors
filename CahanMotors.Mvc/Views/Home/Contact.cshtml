@@ -1,4 +1,11 @@
-﻿<!-- contact-us-section -->
+﻿﻿@using CahanMotors.Entities.Concrete
+@using Microsoft.Extensions.Options
+@inject IOptionsSnapshot<WebsiteInfo> info
+@{
+    var item = info.Value;
+}
+@model CahanMotors.Entities.DTOs.EmailSendDto
+<!-- contact-us-section -->
 <section class="contact-us-section layout-radius">
     <div class="boxcar-container">
         <!-- boxcar-title -->
@@ -88,7 +95,7 @@
                                     </span>
                                     Ünvan
                                 </h6>
-                                <div class="text">Ünvan : Babək pr. 21\29 Bakı AZ1031</div>
+                                <div class="text">Ünvan : @item.Location</div>
                             </div>
                             <div class="content-box">
                                 <h6 class="title">
@@ -105,7 +112,7 @@
                                     </span>
                                     E-poçt
                                 </h6>
-                                <div class="text">marketing@cahanmotors.com</div>
+                                <div class="text">@item.Email</div>
                             </div>
                             <div class="content-box">
                                 <h6 class="title">
@@ -124,18 +131,18 @@
                                     </span>
                                     Əlaqə nömrəsi
                                 </h6>
-                                <div class="text">Salon : +994 55 234 55 45</div>
-                                <div class="text">Servis : +994 50 282 33 33</div>
+                                <div class="text">Salon : @item.Phone</div>
+                                <div class="text">Servis : @item.Phone2</div>
                                 <div class="text">Ehtiyat : +994 55 276 22 23</div>
                                 <div class="text">Zəmanət meneceri : +994 276 22 24</div>
                             </div>
                             <div class="social-icons">
                                 <h6 class="title">Bizi izləyin</h6>
                                 <ul class="social-links">
-                                    <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                                    <li><a href="@item.Facebook"><i class="fa-brands fa-facebook-f"></i></a></li>
+                                    <li><a href="@item.Youtube"><i class="fa-brands fa-youtube"></i></a></li>
+                                    <li><a href="@item.Instagram"><i class="fa-brands fa-instagram"></i></a></li>
+                                    <li><a href="@item.Whatsapp"><i class="fa-brands fa-whatsapp"></i></a></li>
                                 </ul>
                             </div>
                         </div>

@@ -1,6 +1,10 @@
 ﻿@using Microsoft.Extensions.Options
 @using CahanMotors.Entities.Concrete
 @model CahanMotors.Mvc.Models.AboutViewModel
+@inject IOptionsSnapshot<ChooseUsPageInfo> info
+@{
+    var item = info.Value;
+}
 <!-- about-inner-one -->
 <section class="about-inner-one layout-radius">
     <div class="upper-box">
@@ -33,10 +37,16 @@
                 <div class="exp-block col-md-2 col-sm-12">
                     <div class="inner-box">
                         <div class="exp-box">
-                            <h2 class="title">28</h2>
+                            <h2 class="title"><span id="dynamic-year"></span></h2>
                             <div class="text">
                                 illik fəaliyyət
                             </div>
+                            <script>
+                                const openedYear = 1996; 
+                                const currentYear = new Date().getFullYear();
+                                const yearsPassed = currentYear - openedYear;
+                                document.getElementById('dynamic-year').textContent = yearsPassed;
+                            </script>
                         </div>
                     </div>
                 </div>
@@ -93,7 +103,7 @@
                         <div class="content-box">
                             <h6 class="title">Rəsmi nümayəndə</h6>
                             <div class="text">
-                                Siz Avropa standartlarına cavab verən avtomobillər alırsınız.
+                                @item.ContentFirst
                             </div>
                         </div>
                     </div>
@@ -132,7 +142,7 @@
                         <div class="content-box">
                             <h6 class="title">Zəmanət</h6>
                             <div class="text">
-                                Avtomobillərə 5 il və ya 150 000 km-ə qədər zəmanət verilir.
+                                @item.ContentSecond
                             </div>
                         </div>
                     </div>
@@ -172,7 +182,7 @@
                         <div class="content-box">
                             <h6 class="title">Servis xidməti</h6>
                             <div class="text">
-                                Peşəkar ustalarımız tərəfindən servis xidməti mövcuddur.
+                                @item.ContentThird
                             </div>
                         </div>
                     </div>
@@ -195,7 +205,7 @@
                         </div>
                         <div class="content-box">
                             <h6 class="title">Ehtiyat hissələr</h6>
-                            <div class="text">Avtomobillərin bütün orijinal ehtiyat hissələri mövcuddur.</div>
+                            <div class="text">@item.ContentFourth</div>
                         </div>
                     </div>
                 </div>
@@ -289,16 +299,16 @@
                     </div>
                     <ul class="widget-accordion wow fadeInUp">
                         <!--Block-->
-                        @foreach (var item in Model.Questions.Questions)
+                        @foreach (var item1 in Model.Questions.Questions)
                         {
                             <li class="accordion block active-block">
                                 <div class="acc-btn active">
-                                    @item.Question<div class="icon fa fa-plus"></div>
+                                    @item1.Question<div class="icon fa fa-plus"></div>
                                 </div>
                                 <div class="acc-content current">
                                     <div class="content">
                                         <div class="text">
-                                            @item.Answer
+                                            @item1.Answer
                                         </div>
                                     </div>
                                 </div>

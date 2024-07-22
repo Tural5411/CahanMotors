@@ -1,7 +1,14 @@
-﻿@{
+﻿@using CahanMotors.Entities.Concrete
+@using Microsoft.Extensions.Options
+@{
     ViewData["Title"] = "Home Page";
 }
-
+@inject IOptionsSnapshot<ChooseUsPageInfo> info
+@inject IOptionsSnapshot<AboutUsPageInfo> aboutinfo
+@{
+    var choose = info.Value;
+    var about = aboutinfo.Value;
+}
 <!-- boxcar-banner-section-two -->
 @await Component.InvokeAsync("Slider")
 <!-- End boxcar-banner-section -->
@@ -27,7 +34,7 @@
                     <div class="boxcar-title wow fadeInUp">
                         <h2>Cahan motors haqqında</h2>
                         <div class="text">
-                            “Cahan Holdinq” Kommersiya Şirkətlər İttifaqına daxil olan “Cahan Motors” MMC şirkəti artıq 28 ildir ki, Azərbaycanın avtomobil bazarında fəaliyyət göstərir. “Cahan Motors” MMC dünyanın ən çox tanınmış brendlərindən olan Almaniyanın “OPEL” şirkətinin, Çinin ilk avtomobil şirkəti “FAW Group”-a aid olan premium sinif “HONGQI” və “BESTUNE” avtomobillərinin Azərbaycandakı rəsmi distribütorudur.
+                            @about.Content
                         </div>
                     </div>
                     <ul class="list-style-one wow fadeInUp" data-wow-delay="100ms">
@@ -86,7 +93,7 @@
                     <div class="content-box">
                         <h6 class="title">Rəsmi nümayəndə</h6>
                         <div class="text">
-                            Siz Avropa standartlarına cavab verən avtomobillər alırsınız.
+                            @choose.ContentFirst
                         </div>
                     </div>
                 </div>
@@ -120,7 +127,7 @@
                     <div class="content-box">
                         <h6 class="title">Zəmanət</h6>
                         <div class="text">
-                            Avtomobillərə 5 il və ya 150 000 km-ə qədər zəmanət verilir.
+                            @choose.ContentSecond
                         </div>
                     </div>
                 </div>
@@ -150,7 +157,7 @@
                     <div class="content-box">
                         <h6 class="title">Servis xidməti</h6>
                         <div class="text">
-                            Peşəkar ustalarımız tərəfindən servis xidməti mövcuddur.
+                           @choose.ContentThird
                         </div>
                     </div>
                 </div>
@@ -173,7 +180,7 @@
                     </div>
                     <div class="content-box">
                         <h6 class="title">Ehtiyat hissələr</h6>
-                        <div class="text">Avtomobillərin bütün orijinal ehtiyat hissələri mövcuddur.</div>
+                        <div class="text">@choose.ContentFourth</div>
                     </div>
                 </div>
             </div>

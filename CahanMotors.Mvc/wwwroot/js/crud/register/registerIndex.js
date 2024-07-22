@@ -6,19 +6,6 @@
             "<'row'<'col-sm-12'tr>>" +
             "<'row'<'col-sm-5'i><'col-sm-7'p>>",
         buttons: [
-            {
-
-                text: 'Yeni Slayder',
-                attr: {
-                    id: "btnAdd"
-                },
-                className: 'btn btn-success',
-                action: function (e, dt, node, config) {
-                    let url = window.location.href;
-                    url = url.replace("/Index", "");
-                    window.open(`${url}/Add`, "_self");
-                }
-            }
         ],
         "language": {
             "sEmptyTable": "Cədvəldə heç bir məlumat yoxdur",
@@ -64,9 +51,10 @@
         const id = $(this).attr('data-id');
         const tableRow = $(`[name="${id}"]`);
         const articleTitle = tableRow.find('td:eq(1)').text(); //2 = 2ci indexe sahib deyeri al
+        
         Swal.fire({
             title: 'Silmək istədiyinizdən əminsiniz?',
-            text: `${articleTitle} adlı slayder silinəcəkdir!`,
+            text: `${articleTitle} adlı qeydiyyat silinəcəkdir!`,
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -78,13 +66,14 @@
                 $.ajax({
                     type: 'POST',
                     dataType: 'json',
-                    data: { articleId: id },
-                    url: '/Admin/Slider/Delete/',
+                    data: { registerId: id },
+                    url: '/Admin/Register/Delete/',
                     success: function (data) {
                         const articleResult = jQuery.parseJSON(data);
+                        debugger;   
                         if (articleResult.ResultStatus === 0) {
                             Swal.fire(
-                                'Slayder silindi!',
+                                'qeydiyyat silindi!',
                                 `${articleResult.Message}`,
                                 'success'
                             );

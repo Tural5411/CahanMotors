@@ -1,14 +1,14 @@
 ﻿$(document).ready(function () {
 
     //DataTable Start from Here
-    $('#dataTables').DataTable({
+  $('#articleTables').DataTable({
         dom: "<'row'<'col-sm-3'l><'col-sm-6 text-center'B><'col-sm-3'f>>" +
             "<'row'<'col-sm-12'tr>>" +
             "<'row'<'col-sm-5'i><'col-sm-7'p>>",
         buttons: [
             {
-
-                text: 'Yeni Slayder',
+                
+                text: 'Yeni Model',
                 attr: {
                     id: "btnAdd"
                 },
@@ -16,7 +16,7 @@
                 action: function (e, dt, node, config) {
                     let url = window.location.href;
                     url = url.replace("/Index", "");
-                    window.open(`${url}/Add`, "_self");
+                    window.open(`${url}/Add`,"_self");
                 }
             }
         ],
@@ -63,10 +63,10 @@
         event.preventDefault();
         const id = $(this).attr('data-id');
         const tableRow = $(`[name="${id}"]`);
-        const articleTitle = tableRow.find('td:eq(1)').text(); //2 = 2ci indexe sahib deyeri al
+        const articleTitle = tableRow.find('td:eq(2)').text(); //2 = 2ci indexe sahib deyeri al
         Swal.fire({
             title: 'Silmək istədiyinizdən əminsiniz?',
-            text: `${articleTitle} adlı slayder silinəcəkdir!`,
+            text: `${articleTitle} adlı model silinəcəkdir!`,
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -79,12 +79,12 @@
                     type: 'POST',
                     dataType: 'json',
                     data: { articleId: id },
-                    url: '/Admin/Slider/Delete/',
+                    url: '/Admin/Car/Delete/',
                     success: function (data) {
                         const articleResult = jQuery.parseJSON(data);
                         if (articleResult.ResultStatus === 0) {
                             Swal.fire(
-                                'Slayder silindi!',
+                                'Model silindi!',
                                 `${articleResult.Message}`,
                                 'success'
                             );

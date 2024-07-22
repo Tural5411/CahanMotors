@@ -35,7 +35,17 @@
 
                 <div class="form-group">
                     <label asp-for="Body" class="control-label"></label>
-                    <input class="form-control" asp-for="Body" />
+                    <select class="form-control" asp-for="Body">
+                        <option value="">Seçin</option>
+                        <option value="Offroader / SUV, 3 qapı">Offroader / SUV, 3 qapı</option>
+                        <option value="Offroader / SUV, 5 qapı">Offroader / SUV, 5 qapı</option>
+                        <option value="Offroader / SUV, açıq">Offroader / SUV, açıq</option>
+                        <option value="Hetçbek, 3 qap">Hetçbek, 3 qapı</option>
+                        <option value="Hetçbek, 4 qapı">Hetçbek, 4 qapı</option>
+                        <option value="Hetçbek, 5 qapı">Hetçbek, 5 qapı</option>
+                        <option value="Sedan">Sedan</option>
+                        <option value="Kupe">Kupe</option>
+                    </select>
                     <span class="text-danger" asp-validation-for="Body"></span>
                 </div>
             </div>
@@ -153,7 +163,7 @@
         </div>
 
         <div class="form-group text-center">
-            <a asp-action="Index" asp-controller="Car" class="btn btn-danger btn-block">
+            <a href="/Admin/Car" class="btn btn-danger btn-block">
                 <span class="fas fa-times"></span> Ləğv et
             </a>
             <button type="submit" class="btn btn-primary btn-block">
@@ -169,8 +179,8 @@
         <div class="row">
             @foreach (var item in Model.Images)
             {
-                <div name="@item.Id" class="col-lg-4">
-                    <img width="400" src="~/img/@item.ImageUrl" alt="@item.ImageUrl" />
+                <div  style="margin-top:10px;" name="@item.Id" class="col-lg-4">
+                    <img width="400" height="250" src="~/img/@item.ImageUrl" alt="@item.ImageUrl" />
                     <button class="btn btn-danger btn-sm btn-delete-photo" data-id="@item.Id"><span class="fas fa-minus-circle"></span> </button>
                 </div>
             }
