@@ -106,5 +106,52 @@
     });
     //Ajax POST / Deleting a User ends from here
 
+    $(document).on('click', '.btn-delete-photo', function (event) {
+        event.preventDefault();
+        const id = $(this).attr('data-id');
+        const myDiv = $(`[name="${id}"]`);
+        Swal.fire({
+            title: 'Silmək istədiyinizdən əminsiniz?',
+            text: 'Seçdiyiniz şəkil silinəcəkdir!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Bəli',
+            cancelButtonText: 'Xeyr'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: 'POST',
+                    dataType: 'json',
+                    data: { photoId: id },
+                    url: '/Admin/Project/DeletePhoto/',
+                    success: function (data) {
+                        const articleResult = jQuery.parseJSON(data);
+                        if (articleResult.ResultStatus === 0) {
+                            Swal.fire(
+                                'Seçdiyiniz şəkil silindi!',
+                                `${id} bu nömrəli şəkil bazadan silindi`,
+                                'success'
+                            );
+                            myDiv.remove();
+                            //datatable.row(tableRow).remove().draw();
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Xəta Baş Verdi...',
+                                text: `${articleResult.Message}`,
+                            });
+                        };
+                    },
+                    error: function (err) {
+                        toastr.error(`${err.responseText}`, "Xeta");
+                    }
+                });
+            };
+        });
+    });
+    //Ajax POST / Deleting a photo ends from here
+
     //Document Ready ends here
 });

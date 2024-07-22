@@ -22,7 +22,7 @@ namespace CahanMotors.Mvc.Areas.Admin.Models
         public string SeoTags { get; set; }
         public int UserId { get; set; }
         public string CreatedByName { get; set; }
-        public int Body { get; set; }
+        public string Body { get; set; }
         public string FuelType { get; set; }
         public string Year { get; set; }
         public string Transmission { get; set; }
@@ -30,7 +30,6 @@ namespace CahanMotors.Mvc.Areas.Admin.Models
         public string Color { get; set; }
         public string EngineSize { get; set; }
         [DisplayName("Şəkil")]
-        [Required(ErrorMessage = "Zəhmət olmasa {0} seçin")]
         [DataType(DataType.Upload)]
         public IFormFile PictureFile { get; set; }
         public string Thumbnail { get; set; }

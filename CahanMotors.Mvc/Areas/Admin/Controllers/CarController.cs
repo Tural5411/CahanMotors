@@ -141,5 +141,13 @@ namespace CahanMotors.Mvc.Areas.Admin.Controllers
             var deletedTeam = JsonSerializer.Serialize(result);
             return Json(deletedTeam);
         }
+
+        [HttpPost]
+        public async Task<JsonResult> DeletePhoto(int photoId)
+        {
+            var result = await _photoService.HardDelete(photoId);
+            var deletedTeam = JsonSerializer.Serialize(result);
+            return Json(deletedTeam);
+        }
     }
 }
