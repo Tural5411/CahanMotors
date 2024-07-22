@@ -31,7 +31,7 @@ namespace CahanMotors.Mvc.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var result = await _RegisterService.GetAll();
+            var result = await _RegisterService.GetAllByNonDeleteAndActive();
             return View(result.Data);
         }
         

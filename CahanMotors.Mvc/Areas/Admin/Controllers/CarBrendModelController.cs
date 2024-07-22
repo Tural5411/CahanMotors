@@ -31,13 +31,13 @@ namespace CahanMotors.Mvc.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var result = await _carService.GetAll();
+            var result = await _carService.GetAllByNonDeletedAndActive();
             return View(result.Data);
         }
         [HttpGet]
         public IActionResult Add()
         {
-            var result = _carService.GetAllByNonDeletedAndActive();
+            var result = _carService.GetAll();
             ViewBag.brendModels = result.Result.Data.CarBrendModels.Where(x=>x.ParentId==0);
             return View();
         }
@@ -63,9 +63,9 @@ namespace CahanMotors.Mvc.Areas.Admin.Controllers
             return View(carAddDto);
         }
         [HttpGet]
-        public async Task<IActionResult> Update(int videoId)
+        public async Task<IActionResult> Update(int carBrendModelId)
         {
-            var result = await _carService.GetCarBrendModelUpdateDto(videoId);
+            var result = await _carService.GetCarBrendModelUpdateDto(carBrendModelId);
             if (result.ResultStatus == ResultStatus.Succes)
             {
                 var videoUpdateViewModel = Mapper.Map<CarBrendModelUpdateViewModel>(result.Data);
@@ -98,9 +98,9 @@ namespace CahanMotors.Mvc.Areas.Admin.Controllers
             return View(videoUpdateViewModel);
         }
         [HttpPost]
-        public async Task<JsonResult> Delete(int videoId)
+        public async Task<JsonResult> Delete(int carBrendModelId)
         {
-            var result = await _carService.Delete(videoId, LoggedInUser.UserName);
+            var result = await _carService.Delete(carBrendModelId, LoggedInUser.UserName);
             var deletedVideo = JsonSerializer.Serialize(result);
             return Json(deletedVideo);
         }

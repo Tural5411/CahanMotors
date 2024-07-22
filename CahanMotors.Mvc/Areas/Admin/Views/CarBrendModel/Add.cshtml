@@ -1,11 +1,11 @@
 ﻿@model CahanMotors.Mvc.Areas.Admin.Models.CarBrendModelAddViewModel 
 
-<form asp-action="Add" asp-controller="Question" method="post" enctype="multipart/form-data" id="form-team-add">
+<form asp-action="Add" asp-controller="CarBrendModel" method="post" enctype="multipart/form-data" id="form-team-add">
     <input type="hidden" name="IsValid" value="@ViewData.ModelState.IsValid.ToString()" />
     <div asp-validation-summary="All" class="text-danger" id="validation-summary" aria-hidden="true" style="display: none;"></div>
     
     <div class="form-group">
-        <label asp-for="ParentId">Üst kateqoriya</label>
+        <label asp-for="ParentId">Marka</label>
         @if (ViewBag.brendModels != null)
         {
             @Html.DropDownList("ParentId", new SelectList(ViewBag.brendModels, "Id", "Name"))
