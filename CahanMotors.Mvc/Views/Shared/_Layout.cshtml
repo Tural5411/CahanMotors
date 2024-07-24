@@ -1,4 +1,6 @@
-﻿@{ bool isHomePage = Context.Request.Path == "/"; }
+﻿@{
+    bool isHomePage = Context.Request.Path == "/";
+}
 @using Microsoft.Extensions.Options
 @using CahanMotors.Entities.Concrete
 @inject IOptionsSnapshot<WebsiteInfo> WebsiteInfo
@@ -36,132 +38,136 @@
 </head>
 
 <body>
+    <a href="https://wa.me/@websiteInfo.Whatsapp?text=Salam" target=”_blank” class="whatsapp-btn">
+        <i class="fab fa-whatsapp"></i>
+    </a>
     <div class="boxcar-wrapper">
         <!-- Main Header-->
         @if (isHomePage)
         {
-<header class="boxcar-header header-style-v9">
-    <div class="header-inner">
-        <div class="inner-container">
-            <!-- Main box -->
-            <div class="c-box">
-                <div class="logo st-logo">
-                    <a href="/"><img width="150" src="~/cahanmotors/images/cahanwhite.png" alt="" title="Boxcar"></a>
+            <header class="boxcar-header header-style-v9">
+                <div class="header-inner">
+                    <div class="inner-container">
+                        <!-- Main box -->
+                        <div class="c-box">
+                            <div class="logo st-logo">
+                                <a href="/"><img width="150" src="~/cahanmotors/images/cahanwhite.png" alt="" title="Boxcar"></a>
+                            </div>
+                            <div class="right-box">
+                                <div class="nav-out-bar">
+                                    <nav class="nav main-menu">
+                                        <ul class="navigation" id="navbar">
+                                            <li><a href="/">Ana səhifə</a></li>
+                                            <li class="current-dropdown current">
+                                                <span>
+                                                    Haqqımızda <i class="fa-solid fa-angle-down"></i>
+                                                </span>
+                                                <ul class="dropdown">
+                                                    <li><a href="/haqqimizda">Brendlər haqqında</a></li>
+                                                    <li><a href="/sinaq">Sınaq yürüşü</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="/modeller">Modellər</a></li>
+                                            <li><a href="/bloq">Xəbərlər</a></li>
+                                            <li><a href="/elaqe">Bizimlə əlaqə</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+
+                                <div class="mobile-navigation">
+                                    <a href="#nav-mobile" title="">
+                                        <svg width="22" height="11" viewBox="0 0 22 11" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="22" height="2" fill="white" />
+                                            <rect y="9" width="22" height="2" fill="white" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Mobile Menu  -->
+                    </div>
                 </div>
-                <div class="right-box">
-                    <div class="nav-out-bar">
-                        <nav class="nav main-menu">
-                            <ul class="navigation" id="navbar">
-                                <li><a href="/">Ana səhifə</a></li>
-                                <li class="current-dropdown current">
-                                    <span>
-                                        Haqqımızda <i class="fa-solid fa-angle-down"></i>
-                                    </span>
-                                    <ul class="dropdown">
-                                        <li><a href="/haqqimizda">Brendlər haqqında</a></li>
-                                        <li><a href="/sinaq">Sınaq yürüşü</a></li>
+
+                <div id="nav-mobile"></div>
+            </header>
+        }
+        else
+        {
+            <header class="boxcar-header header-style-v1 style-two inner-header cus-style-1">
+                <div class="header-inner">
+                    <div class="inner-container">
+                        <!-- Main box -->
+                        <div class="c-box">
+                            <div class="logo-inner">
+                                <div class="logo">
+                                    <a href="/">
+                                        <img src="~/cahanmotors/images/cahanwhite.png" alt="Cahanmotors logo"
+                                             title="Cahanmotors logo">
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!--Nav Box-->
+                            <div class="nav-out-bar">
+                                <nav class="nav main-menu">
+                                    <ul class="navigation" id="navbar">
+                                        <li><a href="/">Ana səhifə</a></li>
+                                        <li class="current-dropdown current">
+                                            <span>
+                                                Haqqımızda <i class="fa-solid fa-angle-down"></i>
+                                            </span>
+                                            <ul class="dropdown">
+                                                <li><a href="/haqqimizda">Brendlər haqqında</a></li>
+                                                <li><a href="/sinaq">Sınaq yürüşü</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="/modeller">Modellər</a></li>
+                                        <li><a href="/bloq">Xəbərlər</a></li>
+                                        <li><a href="/elaqe">Bizimlə əlaqə</a></li>
                                     </ul>
-                                </li>
-                                <li><a href="/modeller">Modellər</a></li>
-                                <li><a href="/bloq">Xəbərlər</a></li>
-                                <li><a href="/elaqe">Bizimlə əlaqə</a></li>
-                            </ul>
-                        </nav>
-                    </div>
+                                </nav>
+                                <!-- Main Menu End-->
+                            </div>
 
-                    <div class="mobile-navigation">
-                        <a href="#nav-mobile" title="">
-                            <svg width="22" height="11" viewBox="0 0 22 11" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <rect width="22" height="2" fill="white" />
-                                <rect y="9" width="22" height="2" fill="white" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <!-- Mobile Menu  -->
-        </div>
-    </div>
-
-    <div id="nav-mobile"></div>
-</header> }
-else
-{
-<header class="boxcar-header header-style-v1 style-two inner-header cus-style-1">
-    <div class="header-inner">
-        <div class="inner-container">
-            <!-- Main box -->
-            <div class="c-box">
-                <div class="logo-inner">
-                    <div class="logo">
-                        <a href="/">
-                            <img src="~/cahanmotors/images/cahanwhite.png" alt="Cahanmotors logo"
-                                 title="Cahanmotors logo">
-                        </a>
+                            <div class="right-box">
+                                <div class="mobile-navigation">
+                                    <a href="#nav-mobile" title="">
+                                        <svg width="22" height="11" viewBox="0 0 22 11" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="22" height="2" fill="white" />
+                                            <rect y="9" width="22" height="2" fill="white" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Mobile Menu  -->
                     </div>
                 </div>
+                <!-- Header Search -->
+                <div class="search-popup">
+                    <span class="search-back-drop"></span>
+                    <button class="close-search"><span class="fa fa-times"></span></button>
 
-                <!--Nav Box-->
-                <div class="nav-out-bar">
-                    <nav class="nav main-menu">
-                        <ul class="navigation" id="navbar">
-                            <li><a href="/">Ana səhifə</a></li>
-                            <li class="current-dropdown current">
-                                <span>
-                                    Haqqımızda <i class="fa-solid fa-angle-down"></i>
-                                </span>
-                                <ul class="dropdown">
-                                    <li><a href="/haqqimizda">Brendlər haqqında</a></li>
-                                    <li><a href="/sinaq">Sınaq yürüşü</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="/modeller">Modellər</a></li>
-                            <li><a href="/bloq">Xəbərlər</a></li>
-                            <li><a href="/elaqe">Bizimlə əlaqə</a></li>
-                        </ul>
-                    </nav>
-                    <!-- Main Menu End-->
-                </div>
-
-                <div class="right-box">
-                    <div class="mobile-navigation">
-                        <a href="#nav-mobile" title="">
-                            <svg width="22" height="11" viewBox="0 0 22 11" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <rect width="22" height="2" fill="white" />
-                                <rect y="9" width="22" height="2" fill="white" />
-                            </svg>
-                        </a>
+                    <div class="search-inner">
+                        <form method="post" action="#">
+                            <div class="form-group">
+                                <input type="search" name="search-field" value="" placeholder="Search..." required="">
+                                <button type="submit"><i class="fa fa-search"></i></button>
+                            </div>
+                        </form>
                     </div>
                 </div>
-            </div>
-            <!-- Mobile Menu  -->
-        </div>
-    </div>
-    <!-- Header Search -->
-    <div class="search-popup">
-        <span class="search-back-drop"></span>
-        <button class="close-search"><span class="fa fa-times"></span></button>
+                <!-- End Header Search -->
 
-        <div class="search-inner">
-            <form method="post" action="#">
-                <div class="form-group">
-                    <input type="search" name="search-field" value="" placeholder="Search..." required="">
-                    <button type="submit"><i class="fa fa-search"></i></button>
-                </div>
-            </form>
-        </div>
-    </div>
-    <!-- End Header Search -->
-
-    <div id="nav-mobile"></div>
-</header>}
+                <div id="nav-mobile"></div>
+            </header>
+        }
 
         <!-- End header-section -->
         <!-- Main Header-->
         <!-- End header-section -->
-
         @RenderBody()
 
         <!-- main footer -->
