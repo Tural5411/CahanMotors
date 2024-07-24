@@ -3899,13 +3899,13 @@ Main Header
 .header-style-v9 .header-inner .right-box span {
   font-size: 15px;
   color: var(--theme-color-light);
-  margin-right: 18px;
+  /* margin-right: 18px; */
 }
 
 .header-style-v9 .header-inner .right-box span i {
   color: var(--theme-color-light);
   font-size: 16px;
-  margin-right: 10px;
+  /* margin-right: 10px; */
 }
 
 /*** 
@@ -5470,6 +5470,7 @@ Section Title
 .boxcar-banner-section-four .banner-slider-v4 .slick-track .banner-slide>img,
 .boxcar-banner-section-four .banner-slider-v4 .slick-list .banner-slide>img {
   height: 100%;
+  width: 100%;
   -o-object-fit: cover;
   object-fit: cover;
 }
