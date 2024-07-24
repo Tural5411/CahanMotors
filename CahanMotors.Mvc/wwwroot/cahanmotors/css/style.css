@@ -8283,6 +8283,7 @@ Section Title
 .boxcar-pricing-section-four .content-column .inner-column .read-more {
   font-weight: 500;
   font-size: 15px;
+  margin-bottom: 10px;
   font-family: var(--title-font);
   line-height: 26px;
   text-transform: capitalize;
