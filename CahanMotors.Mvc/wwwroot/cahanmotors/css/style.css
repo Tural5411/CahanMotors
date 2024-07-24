@@ -659,7 +659,7 @@ Scroll To Top style
 =======================*/
 .scroll-to-top {
   position: fixed;
-  right: 20px;
+  right: 100px;
   bottom: 20px;
   width: 40px;
   font-size: 16px;
@@ -9451,9 +9451,11 @@ Section Title
   width: 100%;
 }
 
-.car-block-four .inner-box .image-box .image img {
-  width: 100%;
-}
+    .car-block-four .inner-box .image-box .image img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
 
 .car-block-four .inner-box .image-box span {
   position: absolute;
@@ -15579,9 +15581,12 @@ Section Title
   position: relative;
 }
 
-.blog-block .inner-box .image-box .image img {
-  border-radius: 10px;
-}
+    .blog-block .inner-box .image-box .image img {
+        border-radius: 10px;
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+    }
 
 .blog-block .inner-box .image-box .date {
   position: absolute;
@@ -16210,6 +16215,7 @@ Section Title
   max-width: 924px;
   margin: 0 auto;
   position: relative;
+  margin-bottom: 100px;
 }
 
 .blog-section-five .right-box-two .text {
@@ -20095,6 +20101,8 @@ Chat Widget
 
 .inventory-section .gallery-sec .image-column .inner-column .image-box .image img {
   width: 100%;
+  height: 600px;
+  object-fit: cover;
 }
 
 .inventory-section .gallery-sec .image-column .inner-column .image-box .content-box {
