@@ -5464,7 +5464,8 @@ Section Title
 
 .boxcar-banner-section-four .banner-slider-v4 .slick-track .banner-slide,
 .boxcar-banner-section-four .banner-slider-v4 .slick-list .banner-slide {
-  height: 100%;
+  /*height: 100%;*/
+  height: 100vh;
 }
 
 .boxcar-banner-section-four .banner-slider-v4 .slick-track .banner-slide>img,
