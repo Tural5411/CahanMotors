@@ -50,7 +50,7 @@ namespace CahanMotors.Mvc.Areas.Admin.Controllers
                     sliderAddViewModel.PictureFile, PictureType.Post);
                 articleAddDto.ImageUrl = imageResult.Data.FullName;
 
-                var result = await _SliderService.Add(articleAddDto, LoggedInUser.UserName);
+                var result = await _SliderService.Add(articleAddDto);
                 if (result.ResultStatus == ResultStatus.Succes)
                 {
                     _toastNotification.AddSuccessToastMessage(result.Message, new ToastrOptions

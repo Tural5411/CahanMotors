@@ -10,6 +10,11 @@
                         <span class="text-danger" asp-validation-for="Name"></span>
                     </div>
                     <div class="form-group">
+                        <label asp-for="CreatedByName"></label>
+                        <input class="form-control" asp-for="CreatedByName" />
+                        <span class="text-danger" asp-validation-for="CreatedByName"></span>
+                    </div>
+                    <div class="form-group">
                         <label asp-for="PictureFile"></label>
                         <img src="~/img/@Model.ImageUrl" width="150" />
                         <input type="hidden" asp-for="ImageUrl" />

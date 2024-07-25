@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using CahanMotors.Entities.Concrete;
 
 namespace CahanMotors.Mvc.Areas.Admin.Models
 {
@@ -12,6 +13,10 @@ namespace CahanMotors.Mvc.Areas.Admin.Models
     {
         [DisplayName("Ad")]
         public string Name { get; set; }
+        [DisplayName("Model")]
+        public int ModelId { get; set; }
+        [DisplayName("Brend")]
+        public int BrendId { get; set; }
 
         [DisplayName("Qiymət")]
         public string Price { get; set; }
@@ -70,5 +75,6 @@ namespace CahanMotors.Mvc.Areas.Admin.Models
         public bool IsActive { get; set; }
         public IFormFileCollection CarPhotos { get; set; }
         public IList<PhotoAddViewModel> Photos { get; set; }
+        public IList<CarBrendModel> CarBrendModels { get; set; }
     }
 }

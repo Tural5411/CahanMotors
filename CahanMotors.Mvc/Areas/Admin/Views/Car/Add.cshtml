@@ -13,7 +13,14 @@
 
                 <span class="text-danger" asp-validation-for="Name"></span>
             </div>
-
+            
+            <div class="form-group">
+                        <label for="categoryList" asp-for="ModelId"></label>
+                        <select asp-for="ModelId" asp-items="@(new SelectList(Model.CarBrendModels,"Id","Name"))" id="categoryList" class="form-control">
+                            <option></option>
+                        </select>
+                        <span class="text-danger" asp-validation-for="ModelId"></span>
+                    </div>
             <div class="form-group">
                 <label asp-for="Price" class="control-label"></label>
                 <input class="form-control" asp-for="Price" />

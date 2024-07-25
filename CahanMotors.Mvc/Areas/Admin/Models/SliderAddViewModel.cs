@@ -23,5 +23,8 @@ namespace CahanMotors.Mvc.Areas.Admin.Models
         [DisplayName("Aktivdir ?")]
         [Required(ErrorMessage = "{0}  boş ola bilməz!")]
         public bool IsActive { get; set; }
+        [DisplayName("Qiymet ?")]
+        [Required(ErrorMessage = "{0}  boş ola bilməz!")]
+        public string CreatedByName { get; set; }
     }
 }

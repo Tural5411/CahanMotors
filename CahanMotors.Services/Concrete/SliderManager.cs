@@ -25,11 +25,10 @@ namespace CahanMotors.Services.Concrete
             _mapper = mapper;
         }
 
-        public async Task<IDataResult<SliderDto>> Add(SliderAddDto teamAddDto, string createdByName)
+        public async Task<IDataResult<SliderDto>> Add(SliderAddDto teamAddDto)
         {
             var team = _mapper.Map<Slider>(teamAddDto);
-            team.CreatedByName = createdByName;
-            team.ModifiedByName = createdByName;
+            team.ModifiedByName = "CahanMotors";
             var addedteam = await _unitOfWork.Sliders.AddAsync(team);
             await _unitOfWork.SaveAsync();
             return new DataResult<SliderDto>(ResultStatus.Succes, Messages.Team.Add(addedteam.Name), new SliderDto

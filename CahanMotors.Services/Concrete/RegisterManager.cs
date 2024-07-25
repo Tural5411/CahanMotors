@@ -26,17 +26,27 @@ namespace CahanMotors.Services.Concrete
         }
         public async Task<IDataResult<RegisterDto>> Add(RegisterAddDto teamAddDto, string createdByName)
         {
-            var team = _mapper.Map<Registers>(teamAddDto);
-            team.CreatedByName = createdByName;
-            team.ModifiedByName = createdByName;
-            var addedteam=await _unitOfWork.Registers.AddAsync(team);
-            await _unitOfWork.SaveAsync();
-            return new DataResult<RegisterDto>(ResultStatus.Succes, Messages.Team.Add(addedteam.Fullname), new RegisterDto
+            try
+            {
+                var team = _mapper.Map<Registers>(teamAddDto);
+                team.CreatedByName = createdByName;
+                team.ModifiedByName = createdByName;
+                team.IsActive = true;
+                var addedteam = await _unitOfWork.Registers.AddAsync(team);
+                await _unitOfWork.SaveAsync();
+                return new DataResult<RegisterDto>(ResultStatus.Succes, Messages.Team.Add(addedteam.Fullname), new RegisterDto
                 {
                     Team = addedteam,
-                    ResultStatus=ResultStatus.Succes,
+                    ResultStatus = ResultStatus.Succes,
                     Message = Messages.Team.Add(addedteam.Fullname)
-            });
+                });
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+           
         }
 
         public async Task<IDataResult<RegisterDto>> Delete(int teamId, string modifiedByName)

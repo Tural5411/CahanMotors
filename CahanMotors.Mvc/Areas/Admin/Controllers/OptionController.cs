@@ -120,6 +120,7 @@ namespace CahanMotors.Mvc.Areas.Admin.Controllers
                     x.Phone2 = websiteInfo.Phone2;
                     x.Location = websiteInfo.Location;
                     x.Email = websiteInfo.Email;
+                    x.Instagram2 = websiteInfo.Instagram2;
                 });
                 _toastNotification.AddSuccessToastMessage("Esas emeliyyatlar bölməsi uğurla editləndi.", new ToastrOptions
                 {
