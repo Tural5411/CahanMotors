@@ -13,14 +13,23 @@
 
                 <span class="text-danger" asp-validation-for="Name"></span>
             </div>
-            
+
             <div class="form-group">
-                        <label for="categoryList" asp-for="ModelId"></label>
-                        <select asp-for="ModelId" asp-items="@(new SelectList(Model.CarBrendModels,"Id","Name"))" id="categoryList" class="form-control">
-                            <option></option>
-                        </select>
-                        <span class="text-danger" asp-validation-for="ModelId"></span>
-                    </div>
+                <label for="brendList" asp-for="BrendId"></label>
+                <select asp-for="BrendId" asp-items="@(new SelectList(Model.CarBrends,"Id","Name"))" id="brendList" class="form-control">
+                    <option></option>
+                </select>
+                <span class="text-danger" asp-validation-for="BrendId"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="categoryList" asp-for="ModelId"></label>
+                <select asp-for="ModelId"  id="modelList" class="form-control">
+                    <option></option>
+                </select>
+                <span class="text-danger" asp-validation-for="ModelId"></span>
+            </div>
+            
             <div class="form-group">
                 <label asp-for="Price" class="control-label"></label>
                 <input class="form-control" asp-for="Price" />
@@ -78,14 +87,14 @@
         <!-- Picture Upload -->
         <div class="col-md-12">
             <div class="form-group">
-                <label asp-for="PictureFile" class="control-label"></label>
+                <label asp-for="PictureFile" class="control-label">Qapaq şəkli</label>
                 <input type="file" class="form-control-file" asp-for="PictureFile" />
                 <span class="text-danger" asp-validation-for="PictureFile"></span>
             </div>
         </div>
         <div class="col-md-12">
             <div class="form-group">
-                <label for="thumbnailUpload" asp-for="CarPhotos"></label>
+                <label for="thumbnailUpload" asp-for="CarPhotos">Modelin ətraflı şəkilləri</label>
                 <input type="file" accept="image/*" multiple id="thumbnailUpload" class="form-control-file" asp-for="CarPhotos" placeholder="Zəhmət Olmasa Şəkil seçin" />
                 <span class="text-danger" asp-validation-for="CarPhotos"></span>
             </div>
@@ -167,3 +176,41 @@
         </button>
     </div>
 </form>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#brendList').change(function () {
+            var brandId = $(this).val();
+            $('#modelList').empty().append('<option value="">Seçin</option>');
+
+            if (brandId) {
+                $.ajax({
+                    url: '@Url.Action("GetModels", "Car", new { area = "Admin" })',
+                    type: 'GET',
+                    data: { brandId: brandId },
+                    success: function (data) {
+                        console.log(data);
+                        if (data.$values && Array.isArray(data.$values)) {
+                            $.each(data.$values, function (index, model) {
+                                console.log(model); 
+                                $('#modelList').append($('<option/>', {
+                                    value: model.id,
+                                    text: model.name
+                                }));
+                            });
+                        } else {
+                            console.error('$Xəta baş verdi');
+                        }
+                    },
+                    error: function () {
+                        console.error('$Xəta baş verdi');
+                    }
+                });
+            }
+        });
+    });
+
+
+
+
+</script>

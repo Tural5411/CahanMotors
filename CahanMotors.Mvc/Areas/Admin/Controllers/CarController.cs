@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 using NToastNotify;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace CahanMotors.Mvc.Areas.Admin.Controllers
 {
@@ -19,14 +20,16 @@ namespace CahanMotors.Mvc.Areas.Admin.Controllers
     public class CarController : BaseController
     {
         private readonly ICarService _carService;
+        private readonly ICarBrendModelService _carbrendModelService;
         private readonly IToastNotification _toastNotification;
         private readonly IPhotoService _photoService;
 
-        public CarController(IPhotoService photoService,ICarService carService, IToastNotification toastNotification, UserManager<User> userManager, IMapper mapper, IImageHelper imageHelper) : base(userManager, mapper, imageHelper)
+        public CarController(ICarBrendModelService carbrendModelService, IPhotoService photoService, ICarService carService, IToastNotification toastNotification, UserManager<User> userManager, IMapper mapper, IImageHelper imageHelper) : base(userManager, mapper, imageHelper)
         {
             _carService = carService;
             _toastNotification = toastNotification;
             _photoService = photoService;
+            _carbrendModelService = carbrendModelService;
         }
 
         public async Task<IActionResult> Index()
@@ -37,7 +40,13 @@ namespace CahanMotors.Mvc.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Add()
         {
-            return View();
+            var brends = _carbrendModelService.GetAll().Result.Data.CarBrendModels.Where(x => x.ParentId == 0).ToList();
+            var models = _carbrendModelService.GetAll().Result.Data.CarBrendModels.Where(x => x.ParentId > 0).ToList();
+            return View(new CarAddViewModel
+            {
+                CarBrends = brends,
+                CarModels = models
+            });
         }
         [HttpPost]
         public async Task<IActionResult> Add(CarAddViewModel carAddViewModel)
@@ -87,7 +96,7 @@ namespace CahanMotors.Mvc.Areas.Admin.Controllers
             var images = await _photoService.GetAllByNonDeletedAndActive(carId);
             if (result.ResultStatus == ResultStatus.Succes)
             {
-                var teamUpdateViewModel= Mapper.Map<CarUpdateViewModel>(result.Data);
+                var teamUpdateViewModel = Mapper.Map<CarUpdateViewModel>(result.Data);
                 teamUpdateViewModel.Images = images.Data.Photos;
                 return View(teamUpdateViewModel);
             }
@@ -149,5 +158,16 @@ namespace CahanMotors.Mvc.Areas.Admin.Controllers
             var deletedTeam = JsonSerializer.Serialize(result);
             return Json(deletedTeam);
         }
+
+        public async Task<JsonResult> GetModels(int brandId)
+        {
+            var models = (await _carbrendModelService.GetAll()).Data.CarBrendModels
+                                  .Where(m => m.ParentId == brandId)
+                                  .Select(m => new { m.Id, m.Name })
+                                  .ToList();
+            return Json(models);
+        }
+
+
     }
 }

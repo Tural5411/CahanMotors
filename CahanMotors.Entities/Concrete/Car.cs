@@ -18,7 +18,7 @@ namespace CahanMotors.Entities.Concrete
         public string Content { get; set; }
         public string TechnicalParameters { get; set; }
         public string ThumbNail { get; set; }
-        public int Body { get; set; }
+        public string Body { get; set; }
         public string FuelType { get; set; }
         public string Year { get; set; }
         public string Transmission { get; set; }

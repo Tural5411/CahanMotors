@@ -75,6 +75,7 @@ namespace CahanMotors.Mvc.Areas.Admin.Models
         public bool IsActive { get; set; }
         public IFormFileCollection CarPhotos { get; set; }
         public IList<PhotoAddViewModel> Photos { get; set; }
-        public IList<CarBrendModel> CarBrendModels { get; set; }
+        public IList<CarBrendModel> CarModels { get; set; }
+        public IList<CarBrendModel> CarBrends { get; set; }
     }
 }
