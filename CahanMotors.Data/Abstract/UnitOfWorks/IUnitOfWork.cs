@@ -6,6 +6,7 @@ namespace CahanMotors.Data.Abstract.UnitOfWorks
     public interface IUnitOfWork : IAsyncDisposable
     {
         ICarRepository Cars { get; }
+        ICreditRepository Credits { get; }
         IRegisterRepository Registers { get; }
         IPhotoRepository Photos { get; }
         IQuestionRepository Questions { get; }

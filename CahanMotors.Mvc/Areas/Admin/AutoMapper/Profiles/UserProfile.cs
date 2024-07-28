@@ -20,6 +20,9 @@ namespace CahanMotors.Mvc.AutoMapper.Profiles
             CreateMap<User,UserAddDto>();
             CreateMap<UserUpdateDto, User>();
             CreateMap<User, UserUpdateDto>();
+
+            CreateMap<CreditAddDto, Credits>().ReverseMap();
+            CreateMap<CreditUpdateDto, Credits>().ReverseMap();
         }
     }
 }

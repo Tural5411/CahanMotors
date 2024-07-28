@@ -46,7 +46,7 @@ namespace CahanMotors.Mvc.Areas.Admin.Models
         public string CreatedByName { get; set; }
 
         [DisplayName("Bədən Tipi")]
-        public int Body { get; set; }
+        public string Body { get; set; }
 
         [DisplayName("Yanacaq Növü")]
         public string FuelType { get; set; }

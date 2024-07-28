@@ -87,6 +87,11 @@ namespace CahanMotors.Mvc.Areas.Admin.Controllers
                     ModelState.AddModelError("", result.Message);
                 }
             }
+            var brends = _carbrendModelService.GetAll().Result.Data.CarBrendModels.Where(x => x.ParentId == 0).ToList();
+            var models = _carbrendModelService.GetAll().Result.Data.CarBrendModels.Where(x => x.ParentId > 0).ToList();
+
+            carAddViewModel.CarBrends = brends;
+            carAddViewModel.CarModels = models;
             return View(carAddViewModel);
         }
         [HttpGet]

@@ -26,6 +26,12 @@ namespace CahanMotors.Mvc.AutoMapper.Profiles
             CreateMap<ArticleAddViewModel, ArticleAddDto>();
             CreateMap<ArticleUpdateViewModel, ArticleUpdateDto>();
             CreateMap<ArticleUpdateDto,ArticleUpdateViewModel>();
+
+
+            CreateMap<CreditUpdateViewModel, CreditUpdateDto>();
+            CreateMap<CreditUpdateDto, CreditUpdateViewModel>();
+
+            CreateMap<CreditAddDto, Credits>();
         }
     }
 }

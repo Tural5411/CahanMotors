@@ -15,7 +15,7 @@ namespace CahanMotors.Mvc.ViewComponents
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var articlesResult = await _articleService.GetAllByPaging(null, 1, 8, false);
+            var articlesResult = await _articleService.GetAllByPaging(null, null,1, 8, false);
             return View(new CarHomeViewModel
             {
                 CarListDto = articlesResult.Data

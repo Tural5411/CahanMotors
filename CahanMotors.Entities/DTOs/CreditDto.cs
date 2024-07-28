@@ -1,13 +1,15 @@
 ﻿using CahanMotors.Entities.Concrete;
 using CahanMotors.Shared.Entities.Abstract;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace CahanMotors.Entities.DTOs
 {
-    public class CarListDto:DtoGetBase
+    public class CreditDto : DtoGetBase
     {
-        public IList<Car> Cars { get; set; }
-        public int? BrendId { get; set; }
-        public int? ModelId { get; set; }
+        public Credits Credit { get; set; }
     }
 }

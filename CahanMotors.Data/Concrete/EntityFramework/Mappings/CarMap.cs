@@ -53,9 +53,8 @@ namespace CahanMotors.Data.Concrete.EntityFramework.Mappings
                     .IsRequired()
                     .HasMaxLength(50);
 
-                builder.Property(c => c.Body)
-                    .IsRequired();
-
+                builder.Property(c => c.Body);
+                    
                 builder.Property(c => c.FuelType)
                     .HasMaxLength(50);
 
@@ -68,8 +67,9 @@ namespace CahanMotors.Data.Concrete.EntityFramework.Mappings
                 builder.Property(c => c.DriveType)
                     .HasMaxLength(50);
 
-                builder.Property(c => c.ModelId)
-                    .HasMaxLength(50);
+                builder.Property(c => c.ModelId).IsRequired(); ;
+
+                builder.Property(c => c.BrendId).IsRequired(); ;
 
             builder.Property(c => c.Color)
                     .HasMaxLength(50);

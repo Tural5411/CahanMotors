@@ -14,6 +14,8 @@ namespace CahanMotors.Entities.DTOs
     public class CarAddDto
     {
         public string Name { get; set; }
+        public int ModelId { get; set; }
+        public int BrendId { get; set; }
         public string Price { get; set; }
         public string HorsePower { get; set; }
         public string Content { get; set; }
@@ -24,7 +26,7 @@ namespace CahanMotors.Entities.DTOs
         public int UserId { get; set; }
         public bool IsActive { get; set; }
         public string CreatedByName { get; set; }
-        public int Body { get; set; }
+        public string Body { get; set; }
         public string FuelType { get; set; }
         public string Year { get; set; }
         public string Transmission { get; set; }

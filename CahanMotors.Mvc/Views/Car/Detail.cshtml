@@ -44,16 +44,16 @@
                                 </div>
                                 @foreach (var item in Model.CarPhotos.Photos)
                                 {
-                    <div class="image-box">
-                        <figure class="image">
-                            <a href="~/img/@item.ImageUrl"
-                               data-fancybox="gallery">
-                                <img src="~/img/@item.ImageUrl"
-                                     alt="">
-                            </a>
-                        </figure>
+                                    <div class="image-box">
+                                        <figure class="image">
+                                            <a href="~/img/@item.ImageUrl"
+                                               data-fancybox="gallery">
+                                                <img src="~/img/@item.ImageUrl"
+                                                     alt="">
+                                            </a>
+                                        </figure>
 
-                    </div>}
+                                    </div>}
                             </div>
                             <!-- slider section -->
                         </div>
@@ -84,92 +84,15 @@
                                         {
                                             <li><i class="fa-solid fa-check"></i>@item</li>
                                         }
-                                       
+
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
-                   
 
-                    <div class="form-box">
-                        <h4 class="title">Kredit kalkulyatoru</h4>
-                        <form class="row">
-                            <div class="col-lg-6">
-                                <div class="form_boxes">
-                                    <label>Avtomobil qiyməti (₼)</label>
-                                    <div class="drop-menu">
-                                        <div class="select">
-                                            <span>₼25.000</span>
-                                        </div>
-                                        <input type="hidden" name="gender">
-                                        <ul class="dropdown" style="display: none;">
-                                            <li>₼25.000</li>
-                                            <li>₼25.000</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form_boxes">
-                                    <label>Interest rate (%)</label>
-                                    <div class="drop-menu">
-                                        <div class="select">
-                                            <span>4</span>
-                                        </div>
-                                        <input type="hidden" name="gender">
-                                        <ul class="dropdown" style="display: none;">
-                                            <li>4</li>
-                                            <li>4</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form_boxes">
-                                    <label>Period (month)</label>
-                                    <div class="drop-menu">
-                                        <div class="select">
-                                            <span>36</span>
-                                        </div>
-                                        <input type="hidden" name="gender">
-                                        <ul class="dropdown" style="display: none;">
-                                            <li>36</li>
-                                            <li>36</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form_boxes">
-                                    <label>Down Payment (₼)</label>
-                                    <div class="drop-menu">
-                                        <div class="select">
-                                            <span>4000</span>
-                                        </div>
-                                        <input type="hidden" name="gender">
-                                        <ul class="dropdown" style="display: none;">
-                                            <li>4000</li>
-                                            <li>4000</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="form-submit">
-                                    <button type="submit" class="theme-btn">
-                                        Hesabla<img src="images/arrow.svg"
-                                                      alt="">
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                        <ul class="form-list">
-                            <li><span>Monthly Payment</span>₼687.70</li>
-                            <li><span>Total Amount to Pay</span>₼687.70</li>
-                            <li><span>Total Interest Payment</span>₼687.70</li>
-                        </ul>
-                    </div>
+                    @*//Kredit*@
+                    @await Component.InvokeAsync("CreditDetail")
                 </div>
             </div>
             <div class="side-bar-column v2 v3 col-lg-5 col-md-12 col-sm-12">
@@ -218,4 +141,13 @@
     </div>
     <!-- End shop section two -->
 </section>
+ 
 <!-- End inventory-section -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var modelId = @Model.CarDto.Car.ModelId;
+
+        $('#modelId').val(modelId);
+    });
+</script>

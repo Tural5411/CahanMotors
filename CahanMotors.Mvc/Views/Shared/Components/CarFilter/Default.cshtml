@@ -1,0 +1,82 @@
+﻿@using CahanMotors.Mvc.Extensions
+@model CahanMotors.Mvc.Models.CarFilterViewModel
+
+<section class="inventory-pager style-1">
+    <div class="boxcar-container">
+        <form class="inventory-form" id="filterForm" method="get" action="/Modeller">
+            <div class="form_boxes line-r">
+                <div class="drop-menu">
+                    <select id="brendId" name="brandId" class="form-control"> 
+                        <option value="">Marka seç</option>
+                        @foreach (var item in Model.CarBrends)
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="form_boxes line-r">
+                <div class="drop-menu">
+                    <select id="modelId" name="modelId" class="form-control">
+                        <option value="">Brend seç</option>
+                    </select>
+                </div>
+            </div>
+            <input type="hidden" name="currentPage" id="currentPage" value="1">
+            <input id="hiddenBrendId" type="hidden" name="brendId" value="">
+            <input id="hiddenModelId" type="hidden" name="modelId" value="">
+            <input type="hidden" name="modelId" value="">
+            <input type="hidden" name="pageSize" id="pageSize" value="1">
+            <div class="form-submit">
+                <button type="submit" class="theme-btn"><i class="flaticon-search"></i>Axtar</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#brendId').change(function () {
+            var selectedValue = $(this).val();
+            $('#hiddenBrendId').val(selectedValue);
+        });
+
+        $('#modelId').change(function () {
+            var selectedValue = $(this).val();
+            $('#hiddenModelId').val(selectedValue);
+        });
+
+        $('#brendId').change(function () {
+            var brandId = $(this).val();
+            debugger;
+            $('#modelId').empty().append('<option value="">Seçin</option>');
+
+            if (brandId) {
+                $.ajax({
+                    url: '@Url.Action("GetModels", "Car", new { area = "Admin" })',
+                    type: 'GET',
+                    data: { brandId: brandId },
+                    success: function (data) {
+                        console.log(data);
+                        if (data.$values && Array.isArray(data.$values)) {
+                            $.each(data.$values, function (index, model) {
+                                console.log(model);
+                                $('#modelId').append($('<option/>', {
+                                    value: model.id,
+                                    text: model.name
+                                }));
+                            });
+                        } else {
+                            console.error('$Xəta baş verdi');
+                        }
+                    },
+                    error: function () {
+                        console.error('$Xəta baş verdi');
+                    }
+                });
+            }
+        });
+    });
+
+</script>

@@ -157,7 +157,7 @@
                     <div class="content-box">
                         <h6 class="title">Servis xidməti</h6>
                         <div class="text">
-                           @choose.ContentThird
+                            @choose.ContentThird
                         </div>
                     </div>
                 </div>
@@ -192,64 +192,5 @@
 @await Component.InvokeAsync("Articles")
 <!-- End news-section -->
 <!-- Calculator Section -->
-<section style="background-image: url(/img/kk244125323.webp" class="calculator-section-home9">
-    <div class="boxcar-container">
-        <div class="row">
-            <div class="col-xl-5 col-lg-6 col-12">
-                <div class="box-loan-calc">
-                    <div class="boxcar-title">
-                        <h2>Kredit kalkulyatoru</h2>
-                        <p>
-                            Avtomobil kreditiniz üzrə aylıq ödənişləri hesablamaq üçün bu kredit
-                            kalkulyatorundan istifadə edin.
-                        </p>
-                    </div>
-                    <form>
-                        <div class="box-ip">
-                            <div class="form_boxes">
-                                <label>Vehicle Price (₼)</label>
-                                <div class="drop-menu">
-                                    <input type="text" name="gender" value="45₼">
-                                </div>
-                            </div>
-                            <div class="form_boxes">
-                                <label>Interest Rate</label>
-                                <div class="drop-menu">
-                                    <input type="text" name="gender" value="5">
-                                </div>
-                            </div>
-                            <div class="form_boxes">
-                                <label>Period (ay)</label>
-                                <div class="drop-menu">
-                                    <div class="select">
-                                        <span>36</span>
-                                    </div>
-                                    <input type="hidden" name="gender">
-                                    <ul class="dropdown" style="display: none;">
-                                        <li>40</li>
-                                        <li>45</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="form_boxes">
-                                <label>Down Payment</label>
-
-                                <div class="drop-menu">
-                                    <input type="text" name="gender" value="₼45.000">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-submit">
-                            <button type="submit" class="theme-btn">
-                                Hesabla <img src="cahanmotors/images/arrow.svg"
-                                             alt="" />
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+@await Component.InvokeAsync("Credit")
 <!-- End Calculator Section -->

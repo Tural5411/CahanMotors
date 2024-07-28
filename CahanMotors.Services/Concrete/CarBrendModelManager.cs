@@ -27,6 +27,8 @@ namespace CahanMotors.Services.Concrete
         public async Task<IDataResult<CarBrendModelDto>> Add(CarBrendModelAddDto CarBrendModelAddDto, string createdByName)
         {
             var CarBrendModel = _mapper.Map<CarBrendModel>(CarBrendModelAddDto);
+            CarBrendModel.Description = CarBrendModelAddDto.Name;
+            CarBrendModel.IsActive = true;
             CarBrendModel.CreatedByName = createdByName;
             CarBrendModel.ModifiedByName = createdByName;
             var addedCarBrendModel = await _unitOfWork.CarBrendModels.AddAsync(CarBrendModel);

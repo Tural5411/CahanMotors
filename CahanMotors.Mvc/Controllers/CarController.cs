@@ -14,18 +14,22 @@ namespace CahanMotors.Mvc.Controllers
     public class CarController : Controller
     {
         private readonly ICarService _carService;
+        private readonly ICreditService _creditService;
+        private readonly ICarBrendModelService _carBrendModelService;
         private readonly IPhotoService _photoService;
 
-        public CarController(ICarService carService, IPhotoService photoService)
+        public CarController(ICreditService creditService,ICarService carService, ICarBrendModelService carBrendModelService, IPhotoService photoService)
         {
             _carService = carService;
+            _creditService = creditService;
             _photoService = photoService;
+            _carBrendModelService = carBrendModelService;
         }
         [Route("Modeller")]
         [HttpGet]
-        public async Task<IActionResult> Index(int currentPage = 1, int pageSize = 6, bool isAscending = false)
+        public async Task<IActionResult> Index(int? brendId, int? modelId, int currentPage = 1, int pageSize = 6, bool isAscending = false)
         {
-            var articleResult = await _carService.GetAllByPaging(null, currentPage, pageSize, isAscending);
+            var articleResult = await _carService.GetAllByPaging(brendId, modelId, currentPage, pageSize, isAscending);
             return View(articleResult.Data);
         }
 
@@ -45,5 +49,19 @@ namespace CahanMotors.Mvc.Controllers
             }
             return NotFound();
         }
+        [HttpGet]
+        public JsonResult GetCreditDetails(int modelId,int period)
+        {
+            var creditDetails = _creditService.GetAll().Result.Data.Credits.FirstOrDefault(x => x.ModelId == modelId && x.Period == period);
+
+            return Json(new
+            {
+                initialPayment = creditDetails.InitialPayment,
+                period = creditDetails.Period,
+                monthlyPayment = creditDetails.MonthlyPay,
+                carPrice = creditDetails.CarPrice
+            });
+        }
+
     }
 }

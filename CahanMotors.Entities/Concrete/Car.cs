@@ -13,6 +13,7 @@ namespace CahanMotors.Entities.Concrete
     {
         public string Name { get; set; }
         public int ModelId { get; set; }
+        public int BrendId { get; set; }
         public string Price { get; set; }
         public string HorsePower { get; set; }
         public string Content { get; set; }

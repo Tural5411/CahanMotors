@@ -1,0 +1,105 @@
+﻿@using CahanMotors.Mvc.Extensions
+@model CahanMotors.Mvc.Models.CarFilterViewModel
+
+<div class="form-box">
+    <h4 class="title">Kredit kalkulyatoru</h4>
+    <form class="row" id="creditForm">
+        <input type="hidden" id="modelId" value="" />
+        <div class="col-lg-6">
+            <div class="form_boxes">
+                <label>Avtomobil qiyməti (₼)</label>
+                <div class="drop-menu">
+                    <div class="select">
+                        <span id="carPrice">₼25.000</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form_boxes">
+                <label>İlkin ödəniş (%)</label>
+                <div class="drop-menu">
+                    <div class="select">
+                        <span id="initialPayment">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form_boxes">
+                <label>Period (ay)</label>
+                <div class="drop-menu">
+                    <select id="period" name="period" class="select" required>
+                        <option value="">Müddət seç</option>
+                        <option value="12">12</option>
+                        <option value="24">24</option>
+                        <option value="36">36</option>
+                        <option value="48">48</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form_boxes">
+                <label>Aylıq ödəniş (₼)</label>
+                <div class="drop-menu">
+                    <div class="select">
+                        <span id="monthlyPayment">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="form-submit">
+                <button type="submit" class="theme-btn">
+                    Hesabla
+                    <img src="images/arrow.svg"
+                         alt="">
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#creditForm').submit(function (event) {
+            event.preventDefault();
+
+            var modelId = $('#modelId').val();
+            var period = $('#period').val();
+
+            if (modelId && period) {
+                $.ajax({
+                    url: '/Car/GetCreditDetails',
+                    type: 'GET',
+                    data: { modelId: modelId, period: period },
+                    success: function (data) {
+                        if (data) {
+                            $('#initialPayment').text(data.initialPayment);
+                            $('#initialPayment').text(data.initialPayment);
+                            $('#monthlyPayment').text(data.monthlyPayment);
+
+                        } else {
+                            $('#initialPayment').text('0');
+                            $('#monthlyPayment').text('0');
+                            alert('Bu modelin kredit şərti və ya bu period üzrə kredit şərti yoxdur. Zəhmət olmasa əlaqə saxlayın.');
+                        }
+                    },
+                    error: function () {
+                        $('#initialPayment').text('0');
+                        $('#monthlyPayment').text('0');
+                        alert('Bu modelin kredit şərti və ya bu period üzrə kredit şərti yoxdur. Zəhmət olmasa əlaqə saxlayın.');
+                    }
+                });
+            } else {
+                alert("Zəhmət olmasa müddəti daxil edin.");
+            }
+        });
+    });
+
+
+
+
+</script>

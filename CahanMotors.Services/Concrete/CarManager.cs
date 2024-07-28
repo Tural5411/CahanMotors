@@ -163,22 +163,34 @@ namespace CahanMotors.Services.Concrete
             }
             return new DataResult<CarListDto>(ResultStatus.Error, Messages.Car.NotFound(isPlural: true), null);
         }
-        public async Task<IDataResult<CarListDto>> GetAllByPaging(int? categoryId, int currentPage = 1,
+        public async Task<IDataResult<CarListDto>> GetAllByPaging(int? brendId, int? modelId, int currentPage = 1,
             int pageSize = 4, bool isAscending = false)
         {
             pageSize = pageSize > 20 ? 20 : pageSize;
-            var articles = categoryId == null
-                ? await _unitOfWork.Cars.GetAllAsync(a => a.IsActive && !a.IsDeleted, a => a.User)
-                : await _unitOfWork.Cars.GetAllAsync(a => a.IsActive && !a.IsDeleted, a => a.User);
-            var sortedArticles = isAscending ? articles.OrderBy(a => a.Id).Skip((currentPage - 1) * pageSize).Take(pageSize).ToList()
-                : articles.OrderByDescending(a => a.Id).Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
+            var cars = await _unitOfWork.Cars.GetAllAsync(a => a.IsActive && !a.IsDeleted, a => a.User);
+
+            if (brendId != null)
+            {
+                cars = cars.Where(a => a.BrendId == brendId).ToList();
+            }
+            if (modelId != null)
+            {
+                cars = cars.Where(a => a.ModelId == modelId).ToList();
+            }
+            cars = isAscending
+                ? cars.OrderBy(a => a.Id).ToList()
+                : cars.OrderByDescending(a => a.Id).ToList();
+
+            var paginatedCars = cars.Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
+
             return new DataResult<CarListDto>(ResultStatus.Succes, new CarListDto
             {
-                Cars = sortedArticles,
-                CategoryId = categoryId == null ? null : categoryId.Value,
+                Cars = paginatedCars,
+                BrendId = brendId == null ? null : brendId.Value,
+                ModelId = modelId == null ? null : modelId.Value,
                 CurrentPage = currentPage,
                 PageSize = pageSize,
-                TotalCount = articles.Count,
+                TotalCount = cars.Count,
                 ResultStatus = ResultStatus.Succes,
                 IsAscending = false
             });

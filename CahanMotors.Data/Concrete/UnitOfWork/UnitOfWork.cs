@@ -19,6 +19,7 @@ namespace CahanMotors.Data.Concrete.UnitOfWork
         private  QuestionRepository _questionRepository;
         private  RegisterRepository _registerRepository;
         private  CarRepository _carRepository;
+        private  CreditsRepository _creditRepository;
         private  CarBrendModelRepository _carBrendModelRepository;
 
         public UnitOfWork(CahanMotorsContext context)
@@ -27,6 +28,7 @@ namespace CahanMotors.Data.Concrete.UnitOfWork
         }
         public IArticleRepository Articles => _articleRepository ??= new ArticleRepository(_context);
         public ICarRepository Cars => _carRepository ??= new CarRepository(_context);
+        public ICreditRepository Credits => _creditRepository ??= new CreditsRepository(_context);
         public ICarBrendModelRepository CarBrendModels => _carBrendModelRepository ??= new CarBrendModelRepository(_context);
         public IRegisterRepository Registers => _registerRepository ??= new RegisterRepository(_context);
         public IQuestionRepository Questions => _questionRepository ??= new QuestionRepository(_context);

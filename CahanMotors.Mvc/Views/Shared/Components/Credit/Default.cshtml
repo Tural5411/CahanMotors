@@ -1,0 +1,121 @@
+﻿@using CahanMotors.Mvc.Extensions
+@model CahanMotors.Mvc.Models.CarFilterViewModel
+
+<section style="background-image: url(/img/kk244125323.webp" class="calculator-section-home9">
+    <div class="boxcar-container">
+        <div class="row">
+            <div class="col-xl-5 col-lg-6 col-12">
+                <div class="box-loan-calc">
+                    <div class="boxcar-title">
+                        <h2>Kredit kalkulyatoru</h2>
+                        <p>
+                            Avtomobil kreditiniz üzrə aylıq ödənişləri hesablamaq üçün bu kredit
+                            kalkulyatorundan istifadə edin.
+                        </p>
+                    </div>
+                    <form id="creditForm">
+                        <div class="box-ip">
+                            <div class="form_boxes">
+                                <label>Model</label>
+                                <div class="drop-menu">
+                                    <select id="modelId" name="modelId" class="select" required>
+                                        <option value="">Marka seç</option>
+                                        @foreach (var item in Model.CarModels)
+                                        {
+                                            <option value="@item.Id">@item.Name</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form_boxes">
+                                <label>Period (ay)</label>
+                                <select id="period" name="period" class="select" required>
+                                    <option value="">Müddət seç</option>
+                                    <option value="12">12</option>
+                                    <option value="24">24</option>
+                                    <option value="36">36</option>
+                                    <option value="48">48</option>
+                                </select>
+                            </div>
+
+                            <div class="form_boxes">
+                                <label>İlkin ödəniş (₼)</label>
+                                <div class="drop-menu">
+                                    <input type="text" id="initialPayment" value="">
+                                </div>
+                            </div>
+
+
+                            <div class="form_boxes">
+                                <label>Aylıq ödəniş</label>
+                                <div class="drop-menu">
+                                    <input type="text" id="monthlyPayment" value="">
+                                </div>
+                            </div>
+
+                            <div class="form_boxes">
+                                <label>Modelin qiyməti</label>
+
+                                <div class="drop-menu">
+                                    <input type="text" id="carPrice" value="">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-submit">
+                            <button type="submit" class="theme-btn">
+                                Hesabla <img src="cahanmotors/images/arrow.svg"
+                                             alt="" />
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#creditForm').submit(function (event) {
+            event.preventDefault(); 
+
+            var modelId = $('#modelId').val();
+            var period = $('#period').val();
+
+            if (modelId && period) {
+                $.ajax({
+                    url: '/Car/GetCreditDetails', 
+                    type: 'GET',
+                    data: { modelId: modelId, period: period },
+                    success: function (data) {
+                        if (data) {
+                            $('#initialPayment').val(data.initialPayment);
+                            $('#monthlyPayment').val(data.monthlyPayment);
+                            $('#carPrice').val(data.carPrice);
+
+                        } else {
+                            $('#initialPayment').val('');
+                            $('#monthlyPayment').val('');
+                            $('#carPrice').val('');
+                            alert('Bu modelin kredit şərti yoxdur. Zəhmət olmasa əlaqə saxlayın.');
+                        }
+                    },
+                    error: function () {
+                        $('#initialPayment').val('');
+                        $('#monthlyPayment').val('');
+                        $('#carPrice').val('');
+                        alert('Bu modelin kredit şərti yoxdur. Zəhmət olmasa əlaqə saxlayın.');
+                    }
+                });
+            } else {
+                alert("Zəhmət olmasa bir model seçin və müddəti daxil edin.");
+            }
+        });
+    });
+
+
+
+
+</script>

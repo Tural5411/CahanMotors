@@ -45,6 +45,7 @@ namespace CahanMotors.Services.Extensions
             serviceCollection.AddScoped<IRegisterService, RegisterManager>();
             serviceCollection.AddSingleton<IMailService, MailManager>();
             serviceCollection.AddScoped<IPhotoService, PhotoManager>();
+            serviceCollection.AddScoped<ICreditService, CreditManager>();
             return serviceCollection;
         }
     }

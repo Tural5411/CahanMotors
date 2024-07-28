@@ -14,7 +14,7 @@ namespace CahanMotors.Services.Abstract
         Task<IDataResult<CarUpdateDto>> GetUpdateDto(int CarId);
         Task<IDataResult<CarListDto>> GetAll();
         Task<IDataResult<CarListDto>> GetAllByNonDeleteAndActive();
-        Task<IDataResult<CarListDto>> GetAllByPaging(int? categoryId,
+        Task<IDataResult<CarListDto>> GetAllByPaging(int? brendId,int? modelId,
          int currentPage = 1, int pageSize = 4, bool isAscending = false);
         Task<IDataResult<CarDto>> Add(CarAddDto CarAddDto, string createdByName);
         Task<IDataResult<CarDto>> Update(CarUpdateDto CarUpdateDto, string modifiedByName);
