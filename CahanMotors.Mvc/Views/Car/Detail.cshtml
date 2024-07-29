@@ -146,8 +146,12 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function () {
+        debugger;
         var modelId = @Model.CarDto.Car.ModelId;
+        var carPrice = '@(Model.CarDto.Car.Price.ToString())';
+
 
         $('#modelId').val(modelId);
+        $('#carPrice').text(carPrice);
     });
 </script>
