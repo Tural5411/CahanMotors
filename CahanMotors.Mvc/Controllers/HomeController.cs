@@ -4,6 +4,8 @@ using CahanMotors.Services.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using NToastNotify;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Xml;
 
 namespace CahanMotors.Mvc.Controllers
@@ -13,12 +15,13 @@ namespace CahanMotors.Mvc.Controllers
         private readonly AboutUsPageInfo _aboutUsPageInfo;
         private readonly IMailService _mailService;
         private readonly IRegisterService _registerService;
+        private readonly ICarBrendModelService _carBrendModelService;
         private readonly IToastNotification _toastNotification;
 
 
-        public HomeController(IOptionsSnapshot<AboutUsPageInfo> aboutUsPageInfo, IRegisterService registerService, IToastNotification toastNotification, IMailService mailService)
+        public HomeController(ICarBrendModelService carBrendModelService,IOptionsSnapshot<AboutUsPageInfo> aboutUsPageInfo, IRegisterService registerService, IToastNotification toastNotification, IMailService mailService)
         {
-
+            _carBrendModelService = carBrendModelService;
             _aboutUsPageInfo = aboutUsPageInfo.Value;
             _mailService = mailService;
             _toastNotification = toastNotification;
@@ -54,27 +57,31 @@ namespace CahanMotors.Mvc.Controllers
         {
             return View();
         }
+
         [HttpGet]
         [Route("sinaq")]
-        public IActionResult Testdrive()
+        public async Task<IActionResult> Testdrive(RegisterAddDto models,int? a)
         {
-            return View();
+            var cars = (await _carBrendModelService.GetAllByNonDeletedAndActive()).Data.CarBrendModels.Where(x => x.ParentId > 0);
+            models.CarModels = cars.ToList();
+            return View(models);
         }
 
         [HttpPost]
         [Route("sinaq")]
-        public IActionResult Testdrive(RegisterAddDto model)
+        public async Task<IActionResult> Testdrive(RegisterAddDto model)
         {
-            var result = _registerService.Add(model, "Cahanmotors");
-           
-                _toastNotification.AddSuccessToastMessage("Göndərildi", new ToastrOptions
+            var result = await _registerService.Add(model, "Cahanmotors");
+            var cars = (await _carBrendModelService.GetAllByNonDeletedAndActive()).Data.CarBrendModels.Where(x => x.ParentId > 0);
+            model.CarModels = cars.ToList();
+            _toastNotification.AddSuccessToastMessage("Göndərildi", new ToastrOptions
                 {
                     Title = "Uğurlu Əməliyyat",
                     CloseButton = true,
                     ProgressBar = true,
                     HideDuration = 4
                 });
-                return View();
+                return View(model);
         }
 
         [HttpGet]

@@ -1,6 +1,43 @@
 ﻿@using CahanMotors.Mvc.Extensions
 @model CahanMotors.Mvc.Models.CarFilterViewModel
+<style>
+    .form_boxes {
+        margin-bottom: 20px;
+    }
 
+        .form_boxes label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+    .drop-menu {
+        position: relative;
+    }
+
+    .select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-color: #fff;
+    }
+
+    .drop-menu::after {
+        content: '';
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        border-width: 5px;
+        border-style: solid;
+        border-color: #555 transparent transparent transparent;
+    }
+</style>
 <section style="background-image: url(/img/kk244125323.webp" class="calculator-section-home9">
     <div class="boxcar-container">
         <div class="row">
@@ -16,7 +53,7 @@
                     <form id="creditForm">
                         <div class="box-ip">
                             <div class="form_boxes">
-                                <label>Model</label>
+                                <label for="modelId">Model</label>
                                 <div class="drop-menu">
                                     <select id="modelId" name="modelId" class="select" required>
                                         <option value="">Marka seç</option>
@@ -27,15 +64,18 @@
                                     </select>
                                 </div>
                             </div>
+
                             <div class="form_boxes">
-                                <label>Period (ay)</label>
-                                <select id="period" name="period" class="select" required>
-                                    <option value="">Müddət seç</option>
-                                    <option value="12">12</option>
-                                    <option value="24">24</option>
-                                    <option value="36">36</option>
-                                    <option value="48">48</option>
-                                </select>
+                                <label for="period">Period (ay)</label>
+                                <div class="drop-menu">
+                                    <select id="period" name="period" class="select" required>
+                                        <option value="">Müddət seç</option>
+                                        <option value="12">12</option>
+                                        <option value="24">24</option>
+                                        <option value="36">36</option>
+                                        <option value="48">48</option>
+                                    </select>
+                                </div>
                             </div>
 
                             <div class="form_boxes">

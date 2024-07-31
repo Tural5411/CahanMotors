@@ -1,6 +1,9 @@
-﻿using CahanMotors.Shared.Entities.Abstract;
+﻿using CahanMotors.Entities.Concrete;
+using CahanMotors.Shared.Entities.Abstract;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CahanMotors.Entities.DTOs
 {
@@ -13,5 +16,7 @@ namespace CahanMotors.Entities.DTOs
         [DisplayName("Aktivdir ?")]
         [Required(ErrorMessage = "{0}  boş ola bilməz!")]
         public bool IsActive { get; set; }
+        [NotMapped]
+        public IList<CarBrendModel> CarModels { get; set; }
     }
 }

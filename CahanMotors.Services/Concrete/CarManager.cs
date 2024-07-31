@@ -27,8 +27,10 @@ namespace CahanMotors.Services.Concrete
         public async Task<IDataResult<CarDto>> Add(CarAddDto CarAddDto, string createdByName)
         {
             var Car = _mapper.Map<Car>(CarAddDto);
-            Car.CreatedByName = createdByName;
-            Car.ModifiedByName = createdByName;
+            Car.CreatedByName = "CahanMotors";
+            Car.ModifiedByName = "CahanMotors";
+            Car.CreatedDate= DateTime.Now;
+            Car.ModifiedDate= DateTime.Now;
             var addedCar = await _unitOfWork.Cars.AddAsync(Car);
             await _unitOfWork.SaveAsync();
             return new DataResult<CarDto>(ResultStatus.Succes, Messages.Car.Add(addedCar.Name), new CarDto
@@ -42,7 +44,10 @@ namespace CahanMotors.Services.Concrete
         {
             var oldCar = await _unitOfWork.Cars.GetAsync(c => c.Id == CarUpdateDto.Id);
             var Car = _mapper.Map<CarUpdateDto, Car>(CarUpdateDto, oldCar);
-            Car.ModifiedByName = modifiedByName;
+            Car.CreatedByName = "CahanMotors";
+            Car.ModifiedByName = "CahanMotors";
+            Car.CreatedDate = DateTime.Now;
+            Car.ModifiedDate = DateTime.Now;
             if (Car != null)
             {
                 var updatedCar = await _unitOfWork.Cars.UpdateAsync(Car);

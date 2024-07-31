@@ -52,7 +52,7 @@ namespace CahanMotors.Mvc.Controllers
         [HttpGet]
         public JsonResult GetCreditDetails(int modelId,int period)
         {
-            var creditDetails = _creditService.GetAll().Result.Data.Credits.FirstOrDefault(x => x.ModelId == modelId && x.Period == period);
+            var creditDetails = _creditService.GetAllByNonDeletedAndActive().Result.Data.Credits.FirstOrDefault(x => x.ModelId == modelId && x.Period == period);
 
             return Json(new
             {

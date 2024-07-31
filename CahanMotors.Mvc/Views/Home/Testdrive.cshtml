@@ -26,7 +26,14 @@
                                 <div class="col-lg-6">
                                     <div class="form_boxes">
                                         <label>Maşının modeli</label>
-                                        <input type="text" asp-for="Message"  />
+                                        <select id="carModelSelect">
+                                            <option value="">Seç</option>
+                                            @foreach (var item in Model.CarModels)
+                                            {
+                                                <option value="@item.Name">@item.Name</option>
+                                            }
+                                        </select>
+                                        <input type="hidden" id="modelNameInput" asp-for="Message" />
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -67,3 +74,12 @@
     </div>
 </section>
 <!-- contact-us-section -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#carModelSelect').change(function () {
+            var selectedModelName = $(this).val();
+            $('#modelNameInput').val(selectedModelName);
+        });
+    });
+</script>

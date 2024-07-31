@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using CahanMotors.Entities.Concrete;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CahanMotors.Mvc.Areas.Admin.Models
 {
@@ -14,6 +15,8 @@ namespace CahanMotors.Mvc.Areas.Admin.Models
         [Required]
         public int Id { get; set; }
         public string Name { get; set; }
+        public int ModelId { get; set; }
+        public int BrendId { get; set; }
         public string Price { get; set; }
         public string HorsePower { get; set; }
         public string Content { get; set; }

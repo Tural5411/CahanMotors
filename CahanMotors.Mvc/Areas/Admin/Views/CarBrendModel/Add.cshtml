@@ -1,35 +1,79 @@
-﻿@model CahanMotors.Mvc.Areas.Admin.Models.CarBrendModelAddViewModel 
+﻿@model CahanMotors.Mvc.Areas.Admin.Models.CarBrendModelAddViewModel
+<style>
+    .form-section {
+        display: none;
+    }
+</style>
 
-<form asp-action="Add" asp-controller="CarBrendModel" method="post" enctype="multipart/form-data" id="form-team-add">
-    <input type="hidden" name="IsValid" value="@ViewData.ModelState.IsValid.ToString()" />
-    <div asp-validation-summary="All" class="text-danger" id="validation-summary" aria-hidden="true" style="display: none;"></div>
-    
-    <div class="form-group">
-        <label asp-for="ParentId">Marka</label>
-        @if (ViewBag.brendModels != null)
-        {
-            @Html.DropDownList("ParentId", new SelectList(ViewBag.brendModels, "Id", "Name"))
-        }
-        <span class="text-danger" asp-validation-for="ParentId"></span>
+<div class="container mt-5">
+    <div class="btn-group mb-3" role="group">
+        <button type="button" class="btn btn-primary" id="showBrandForm">Marka əlavə et</button>
+        <button type="button" class="btn btn-secondary" id="showModelForm">Model əlavə et</button>
     </div>
-    <div class="form-group">
-        <label asp-for="Name"></label>
-        <input class="form-control" asp-for="Name" />
-        <span class="text-danger" asp-validation-for="Name"></span>
+
+    <div id="brandForm" class="form-section">
+        <form asp-action="Add" asp-controller="CarBrendModel" method="post" enctype="multipart/form-data" id="form-brand-add">
+            <div asp-validation-summary="All" class="text-danger" id="validation-summary" aria-hidden="true" style="display: none;"></div>
+            <div class="form-group">
+                <label asp-for="Name">Marka adı</label>
+                <input class="form-control" asp-for="Name" />
+                <span class="text-danger" asp-validation-for="Name"></span>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" asp-for="IsActive" />
+                <label asp-for="IsActive" class="form-check-label"></label>
+                <span class="text-danger" asp-validation-for="IsActive"></span>
+            </div>
+            <div class="form-group">
+                <a asp-action="Index" asp-controller="Question" asp-area="Admin" class="btn btn-danger btn-block"><span class="fas fa-times"></span>Ləğv et</a>
+                <button type="submit" class="btn btn-primary btn-block"><span class="fas fa-save"></span>Yadda saxla</button>
+            </div>
+        </form>
     </div>
-    <div class="form-group form-check">
-        <input type="checkbox" id="isMain" class="form-check-input" asp-for="IsBrand" onclick="document.getElementById('ParentId').disabled = this.checked;" />
-        <label asp-for="IsBrand" class="form-check-label">Yeni Markadırsa klik et modeldirsə boş burax</label>
-        <span class="text-danger" asp-validation-for="IsBrand"></span>
+
+    <div id="modelForm" class="form-section">
+        <form asp-action="Add" asp-controller="CarBrendModel" method="post" enctype="multipart/form-data" id="form-model-add">
+            <div asp-validation-summary="All" class="text-danger" id="validation-summary" aria-hidden="true" style="display: none;"></div>
+            <div class="form-group">
+                <label asp-for="ParentId">Marka</label>
+                @if (ViewBag.brendModels != null)
+                {
+                    @Html.DropDownList("ParentId", new SelectList(ViewBag.brendModels, "Id", "Name"), new { @class = "form-control" })
+                }
+                <span class="text-danger" asp-validation-for="ParentId"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name">Model Adı</label>
+                <input class="form-control" asp-for="Name" />
+                <span class="text-danger" asp-validation-for="Name"></span>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" asp-for="IsActive" />
+                <label asp-for="IsActive" class="form-check-label"></label>
+                <span class="text-danger" asp-validation-for="IsActive"></span>
+            </div>
+            <div class="form-group">
+                <a asp-action="Index" asp-controller="Question" asp-area="Admin" class="btn btn-danger btn-block"><span class="fas fa-times"></span>Ləğv et</a>
+                <button type="submit" class="btn btn-primary btn-block"><span class="fas fa-save"></span>Yadda saxla</button>
+            </div>
+        </form>
     </div>
-  
-    <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" asp-for="IsActive" />
-        <label asp-for="IsActive" class="form-check-label"></label>
-        <span class="text-danger" asp-validation-for="IsActive"></span>
-    </div>
-    <div class="form-group">
-        <a asp-action="Index" asp-controller="Question" asp-area="Admin" class="btn btn-danger btn-block"><span class="fas fa-times"></span>Ləğv et</a>
-        <button type="submit" class="btn btn-primary btn-block"><span class="fas fa-save"></span>Yadda saxla</button>
-    </div>
-</form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#showBrandForm').click(function () {
+            $('.form-section').hide();
+            $('#brandForm').show();
+        });
+
+        $('#showModelForm').click(function () {
+            $('.form-section').hide();
+            $('#modelForm').show();
+        });
+
+        // Default to show brand form
+        $('#showBrandForm').click();
+    });
+</script>

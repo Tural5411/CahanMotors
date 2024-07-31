@@ -80,7 +80,7 @@ namespace CahanMotors.Mvc.Areas.Admin.Controllers
                     {
                         Title = "Uğurlu əməliyyat"
                     });
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", "Car", new { area = "Admin" });
                 }
                 else
                 {
@@ -128,6 +128,24 @@ namespace CahanMotors.Mvc.Areas.Admin.Controllers
                 }
                 var teamUpdateDto = Mapper.Map<CarUpdateDto>(teamUpdateViewModel);
                 var result = await (_carService).Update(teamUpdateDto, LoggedInUser.UserName);
+
+
+                ////Multi Image
+                //if (teamUpdateViewModel.CarPhotos != null)
+                //{
+                //    teamUpdateViewModel.p = new List<PhotoAddViewModel>();
+                //    foreach (var file in projectUpdateViewModel.ProjectPhotos)
+                //    {
+                //        var galleryResult = await ImageHelper.UploadImageV2(file);
+                //        var gallery = new PhotoAddDto()
+                //        {
+                //            ProjectId = result.Data.Project.Id,
+                //            URL = galleryResult
+                //        };
+                //        await _photoService.Add(gallery, "Damplus");
+                //    }
+                //}
+
                 if (result.ResultStatus == ResultStatus.Succes)
                 {
                     if (isNewThumbnailUploaded)
@@ -139,7 +157,7 @@ namespace CahanMotors.Mvc.Areas.Admin.Controllers
                         Title = "Uğurlu əməliyyat",
                         CloseButton = true
                     });
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", "Car", new { area = "Admin" });
                 }
                 else
                 {
