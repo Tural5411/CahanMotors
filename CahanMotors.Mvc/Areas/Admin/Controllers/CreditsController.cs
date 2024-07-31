@@ -41,7 +41,7 @@ namespace CahanMotors.Mvc.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Add()
         {
-            var result = _carbrendModelService.GetAll();
+            var result = _carbrendModelService.GetAllByNonDeletedAndActive();
             ViewBag.brendModels = result.Result.Data.CarBrendModels.Where(x => x.ParentId > 0);
             return View();
         }
@@ -64,7 +64,7 @@ namespace CahanMotors.Mvc.Areas.Admin.Controllers
                     ModelState.AddModelError("", result.Message);
                 }
             }
-            var result1 = _carbrendModelService.GetAll();
+            var result1 = _carbrendModelService.GetAllByNonDeletedAndActive();
             ViewBag.brendModels = result1.Result.Data.CarBrendModels.Where(x => x.ParentId > 0);
             return View(carAddDto);
         }
@@ -103,7 +103,7 @@ namespace CahanMotors.Mvc.Areas.Admin.Controllers
                     ModelState.AddModelError("", result.Message);
                 }
             }
-            var result1 = _carbrendModelService.GetAll();
+            var result1 = _carbrendModelService.GetAllByNonDeletedAndActive();
             ViewBag.brendModels = result1.Result.Data.CarBrendModels.Where(x => x.ParentId > 0);
             return View(videoUpdateViewModel);
         }

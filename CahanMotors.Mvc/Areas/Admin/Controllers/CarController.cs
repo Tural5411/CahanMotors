@@ -40,8 +40,8 @@ namespace CahanMotors.Mvc.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Add()
         {
-            var brends = _carbrendModelService.GetAll().Result.Data.CarBrendModels.Where(x => x.ParentId == 0).ToList();
-            var models = _carbrendModelService.GetAll().Result.Data.CarBrendModels.Where(x => x.ParentId > 0).ToList();
+            var brends = _carbrendModelService.GetAllByNonDeletedAndActive().Result.Data.CarBrendModels.Where(x => x.ParentId == 0).ToList();
+            var models = _carbrendModelService.GetAllByNonDeletedAndActive().Result.Data.CarBrendModels.Where(x => x.ParentId > 0).ToList();
             return View(new CarAddViewModel
             {
                 CarBrends = brends,
@@ -87,8 +87,8 @@ namespace CahanMotors.Mvc.Areas.Admin.Controllers
                     ModelState.AddModelError("", result.Message);
                 }
             }
-            var brends = _carbrendModelService.GetAll().Result.Data.CarBrendModels.Where(x => x.ParentId == 0).ToList();
-            var models = _carbrendModelService.GetAll().Result.Data.CarBrendModels.Where(x => x.ParentId > 0).ToList();
+            var brends = _carbrendModelService.GetAllByNonDeletedAndActive().Result.Data.CarBrendModels.Where(x => x.ParentId == 0).ToList();
+            var models = _carbrendModelService.GetAllByNonDeletedAndActive().Result.Data.CarBrendModels.Where(x => x.ParentId > 0).ToList();
 
             carAddViewModel.CarBrends = brends;
             carAddViewModel.CarModels = models;
@@ -166,7 +166,7 @@ namespace CahanMotors.Mvc.Areas.Admin.Controllers
 
         public async Task<JsonResult> GetModels(int brandId)
         {
-            var models = (await _carbrendModelService.GetAll()).Data.CarBrendModels
+            var models = (await _carbrendModelService.GetAllByNonDeletedAndActive()).Data.CarBrendModels
                                   .Where(m => m.ParentId == brandId)
                                   .Select(m => new { m.Id, m.Name })
                                   .ToList();

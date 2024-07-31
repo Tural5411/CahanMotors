@@ -23,6 +23,7 @@ namespace CahanMotors.Mvc.AutoMapper.Profiles
 
             CreateMap<CreditAddDto, Credits>().ReverseMap();
             CreateMap<CreditUpdateDto, Credits>().ReverseMap();
+            CreateMap<CarBrendModelUpdateDto, CarBrendModel>().ReverseMap();
         }
     }
 }

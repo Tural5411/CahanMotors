@@ -6,18 +6,20 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using CahanMotors.Entities.Concrete;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CahanMotors.Mvc.Areas.Admin.Models
 {
     public class CarBrendModelUpdateViewModel
     {
+        public int Id { get; set; }
         public int? ParentId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        [DisplayName("Aktivdir ?")]
-        [Required(ErrorMessage = "{0}  boş ola bilməz!")]
         public bool IsActive { get; set; }
         public bool IsDeleted { get; set; }
+        [NotMapped]
+        public bool IsBrand { get; set; }
     }
 
     public class CreditUpdateViewModel

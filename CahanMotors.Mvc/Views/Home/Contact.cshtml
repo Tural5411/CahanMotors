@@ -33,7 +33,7 @@
                                     maraqlandığınız suallara cavab verməyə şad olarıq.
                                 </div>
                             </div>
-                            <form class="row">
+                            <form class="row" asp-action="Contact" asp-controller="Home" method="post">
                                 <div class="col-lg-6">
                                     <div class="form_boxes">
                                         <label>Adınız</label>
@@ -43,7 +43,7 @@
                                 <div class="col-lg-6">
                                     <div class="form_boxes">
                                         <label>Soyadınız</label>
-                                        <input type="text" name="last-name" >
+                                        <input type="text" name="email" >
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -55,7 +55,7 @@
                                 <div class="col-lg-6">
                                     <div class="form_boxes">
                                         <label>Mövzu Seçin</label>
-                                        <input type="select">
+                                        <input type="select" name="subject">
                                     </div>
                                 </div>
                                 <div class="col-lg-12">

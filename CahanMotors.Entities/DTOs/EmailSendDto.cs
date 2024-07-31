@@ -16,7 +16,6 @@ namespace CahanMotors.Entities.DTOs
         [MinLength(3,ErrorMessage ="{0} sahəhsi {1} dən kiçik ola bilməz")]
         public string Name { get; set; }
         [DisplayName("Email Ünvanınız")]
-        [DataType(DataType.EmailAddress)]
         [Required(ErrorMessage = "{0} sahəsi boşdur")]
         [MaxLength(100, ErrorMessage = "{0} sahəhsi {1} dan böyük ola bilməz")]
         [MinLength(10, ErrorMessage = "{0} sahəhsi {1} dən kiçik ola bilməz")]

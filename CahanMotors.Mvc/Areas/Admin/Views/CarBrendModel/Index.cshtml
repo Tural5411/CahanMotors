@@ -52,8 +52,8 @@
                     {
                         <tr class="odd" name="@team.Id">
                             <td>@team.Id</td>
-                            <td>@(Model.CarBrendModels.FirstOrDefault(x => x.Id == team.ParentId)?.Name == null ? team.Name : Model.CarBrendModels.FirstOrDefault(x => x.Id == team.ParentId).Name)</td>
-                            <td>@team.Name</td>
+                            <td style="font-weight:900">@(Model.CarBrendModels.FirstOrDefault(x => x.Id == team.ParentId)?.Name == null ? team.Name : Model.CarBrendModels.FirstOrDefault(x => x.Id == team.ParentId).Name)</td>
+                            <td>@(team.ParentId == 0 ? " " : team.Name )</td>
                             <td class="center"><span class="status active">@(team.IsActive ? "Bəli" : "Xeyr")</span></td>
                             <td class="center"><span class="status active">@(team.IsDeleted ? "Bəli" : "Xeyr")</span></td>
                             <td class="center">@team.CreatedDate.ToShortDateString()</td>

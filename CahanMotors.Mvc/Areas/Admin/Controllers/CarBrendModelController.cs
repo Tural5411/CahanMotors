@@ -37,7 +37,7 @@ namespace CahanMotors.Mvc.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Add()
         {
-            var result = _carService.GetAll();
+            var result = _carService.GetAllByNonDeletedAndActive();
             ViewBag.brendModels = result.Result.Data.CarBrendModels.Where(x=>x.ParentId==0);
             return View();
         }
@@ -69,6 +69,7 @@ namespace CahanMotors.Mvc.Areas.Admin.Controllers
             if (result.ResultStatus == ResultStatus.Succes)
             {
                 var videoUpdateViewModel = Mapper.Map<CarBrendModelUpdateViewModel>(result.Data);
+                videoUpdateViewModel.Id = carBrendModelId;
                 return View(videoUpdateViewModel);
             }
             return NotFound();

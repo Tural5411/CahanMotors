@@ -12,6 +12,8 @@ using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using System.Net.Http;
 
 namespace CahanMotors.Services.Concrete
 {
@@ -24,8 +26,13 @@ namespace CahanMotors.Services.Concrete
             _smtpSettings = smtpSettings.Value;
         }
 
-        public IResult Send(EmailSendDto emailSendDto)
+        public IResult Send(EmailSendDto emailSendDto, string recaptchaToken)
         {
+            if (!IsCaptchaValid(recaptchaToken).Result)
+            {
+                return new Result(ResultStatus.Error, "CAPTCHA doğrulaması uğursuz oldu.");
+            }
+
             MailMessage message = new MailMessage
             {
                 From = new MailAddress(_smtpSettings.SenderEmail),
@@ -69,5 +76,22 @@ namespace CahanMotors.Services.Concrete
             smtpClient.Send(message);
             return new Result(ResultStatus.Succes, "Mailiniz uğurla göndərildi");
         }
+
+        public async Task<bool> IsCaptchaValid(string token)
+        {
+            var client = new HttpClient();
+            var response = await client.GetStringAsync($"https://www.google.com/recaptcha/api/siteverify?secret=6LeRkRsqAAAAAIJiaFjGq8ditOnIuQ8T5Gtn_hNe&response={token}");
+            var captchaResponse = JsonConvert.DeserializeObject<CaptchaResponse>(response);
+
+            return captchaResponse.Success;
+        }
+    }
+    public class CaptchaResponse
+    {
+        public bool Success { get; set; }
+        public string ChallengeTs { get; set; }
+        public string Hostname { get; set; }
+        [JsonProperty("error-codes")]
+        public List<string> ErrorCodes { get; set; }
     }
 }

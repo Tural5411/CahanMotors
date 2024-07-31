@@ -10,7 +10,7 @@ namespace CahanMotors.Services.Abstract
 {
     public interface IMailService
     {
-        IResult Send(EmailSendDto emailSendDto);
+        IResult Send(EmailSendDto emailSendDto, string recaptchaToken);
         IResult SendContactEmail(EmailSendDto emailSendDto);
     }
 }

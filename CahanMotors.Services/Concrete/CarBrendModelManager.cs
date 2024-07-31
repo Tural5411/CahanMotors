@@ -137,6 +137,7 @@ namespace CahanMotors.Services.Concrete
             var oldCarBrendModel = await _unitOfWork.CarBrendModels.GetAsync(c => c.Id == CarBrendModelUpdateDto.Id);
             var CarBrendModel = _mapper.Map<CarBrendModelUpdateDto, CarBrendModel>(CarBrendModelUpdateDto, oldCarBrendModel);
             CarBrendModel.ModifiedByName = modifiedByName;
+            CarBrendModel.CreatedByName = modifiedByName;
             if (CarBrendModel != null)
             {
                 var updatedCarBrendModel = await _unitOfWork.CarBrendModels.UpdateAsync(CarBrendModel);
