@@ -16,16 +16,18 @@ namespace CahanMotors.Mvc.Controllers
         private readonly IMailService _mailService;
         private readonly IRegisterService _registerService;
         private readonly ICarBrendModelService _carBrendModelService;
+        private readonly ICarService _carService;
         private readonly IToastNotification _toastNotification;
 
 
-        public HomeController(ICarBrendModelService carBrendModelService,IOptionsSnapshot<AboutUsPageInfo> aboutUsPageInfo, IRegisterService registerService, IToastNotification toastNotification, IMailService mailService)
+        public HomeController(ICarService carService,ICarBrendModelService carBrendModelService,IOptionsSnapshot<AboutUsPageInfo> aboutUsPageInfo, IRegisterService registerService, IToastNotification toastNotification, IMailService mailService)
         {
             _carBrendModelService = carBrendModelService;
             _aboutUsPageInfo = aboutUsPageInfo.Value;
             _mailService = mailService;
             _toastNotification = toastNotification;
             _registerService = registerService;
+            _carService= carService;
         }
         [Route("/sitemap.xml")]
         public void SitemapXml()
@@ -60,20 +62,42 @@ namespace CahanMotors.Mvc.Controllers
 
         [HttpGet]
         [Route("sinaq")]
-        public async Task<IActionResult> Testdrive(RegisterAddDto models,int? a)
+        public async Task<IActionResult> Testdrive(RegisterAddDto models, int? a)
         {
-            var cars = (await _carBrendModelService.GetAllByNonDeletedAndActive()).Data.CarBrendModels.Where(x => x.ParentId > 0);
-            models.CarModels = cars.ToList();
+            var allCarsResult = await _carService.GetAllByNonDeleteAndActive();
+            var allCars = allCarsResult.Data.Cars;
+
+            var carBrendModelsResult = await _carBrendModelService.GetAllByNonDeletedAndActive();
+            var carBrendModels = carBrendModelsResult.Data.CarBrendModels.Where(x => x.ParentId > 0);
+
+            var carModelIds = allCars.Select(c => c.ModelId).ToHashSet();
+            var commonModels = carBrendModels.Where(m => carModelIds.Contains(m.Id)).ToList();
+
+            models.CarModels = commonModels;
+
             return View(models);
         }
+
 
         [HttpPost]
         [Route("sinaq")]
         public async Task<IActionResult> Testdrive(RegisterAddDto model)
         {
+            
             var result = await _registerService.Add(model, "Cahanmotors");
-            var cars = (await _carBrendModelService.GetAllByNonDeletedAndActive()).Data.CarBrendModels.Where(x => x.ParentId > 0);
-            model.CarModels = cars.ToList();
+
+            var allCarsResult = await _carService.GetAllByNonDeleteAndActive();
+            var allCars = allCarsResult.Data.Cars;
+
+            var carBrendModelsResult = await _carBrendModelService.GetAllByNonDeletedAndActive();
+            var carBrendModels = carBrendModelsResult.Data.CarBrendModels.Where(x => x.ParentId > 0);
+
+            var carModelIds = allCars.Select(c => c.ModelId).ToHashSet();
+            var commonModels = carBrendModels.Where(m => carModelIds.Contains(m.Id)).ToList();
+
+            model.CarModels = commonModels;
+
+
             _toastNotification.AddSuccessToastMessage("Göndərildi", new ToastrOptions
                 {
                     Title = "Uğurlu Əməliyyat",

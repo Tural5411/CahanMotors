@@ -29,7 +29,7 @@
     <link rel="stylesheet" type="text/css" href="~/cahanmotors/css/slick.css">
     <link href="~/cahanmotors/css/mmenu.css" rel="stylesheet">
     <link href="~/cahanmotors/css/style.css" rel="stylesheet">
-
+    <link href="~/preloader/style.css" rel="stylesheet">
     <link rel="shortcut icon" href="~/img/cahancolorlogo.png" type="image/x-icon">
     <link rel="icon" href="~/img/cahancolorlogo.png" type="image/x-icon">
     <!-- Responsive -->
@@ -38,6 +38,12 @@
 </head>
 
 <body>
+    <div id="preloader">
+        <div id="loading-bar"></div>
+        <div id="logo">
+            <img style="width: 200px;height: 200px;" src="~/img/cahancolorlogo.png">
+        </div>
+    </div>
     <a href="https://wa.me/@websiteInfo.Whatsapp?text=Salam" target=”_blank” class="whatsapp-btn">
         <i class="fab fa-whatsapp"></i>
     </a>
@@ -272,6 +278,7 @@
     <script src="~/cahanmotors/js/knob.js"></script>
     <script src="~/cahanmotors/js/mmenu.js"></script>
     <script src="~/cahanmotors/js/main.js"></script>
+    <script src="~/preloader/script.js"></script>
     @await Component.InvokeAsync("NToastNotify")
 </body>
 </html>

@@ -43,6 +43,7 @@
     <link rel="stylesheet" type="text/css" href="~/cahanmotors/css/slick.css">
     <link href="~/cahanmotors/css/mmenu.css" rel="stylesheet">
     <link href="~/cahanmotors/css/style.css" rel="stylesheet">
+    <link href="~/preloader/style.css" rel="stylesheet">
 
     <link rel="shortcut icon" href="~/img/cahancolorlogo.png" >
     <!-- Responsive -->
@@ -51,6 +52,12 @@
 </head>
 
 <body>
+    <div id="preloader">
+        <div id="loading-bar"></div>
+        <div id="logo">
+            <img style="width: 200px;height: 200px;" src="~/img/cahancolorlogo.png">
+        </div>
+    </div>
     <div class="boxcar-wrapper">
         <!-- Main Header-->
         @if (isHomePage)
@@ -281,6 +288,7 @@ else
     <script src="~/cahanmotors/js/knob.js"></script>
     <script src="~/cahanmotors/js/mmenu.js"></script>
     <script src="~/cahanmotors/js/main.js"></script>
+    <script src="~/preloader/script.js"></script>
     @await Component.InvokeAsync("NToastNotify")
 </body>
 </html>
