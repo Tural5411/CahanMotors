@@ -45,7 +45,7 @@
     <link href="~/cahanmotors/css/style.css" rel="stylesheet">
     <link href="~/preloader/style.css" rel="stylesheet">
 
-    <link rel="shortcut icon" href="~/img/cahancolorlogo.png" >
+    <link rel="shortcut icon" href="~/img/cahancolorlogo.png">
     <!-- Responsive -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -62,213 +62,216 @@
         <!-- Main Header-->
         @if (isHomePage)
         {
-<header class="boxcar-header header-style-v9">
-    <div class="header-inner">
-        <div class="inner-container">
-            <!-- Main box -->
-            <div class="c-box">
-                <div class="logo st-logo">
-                    <a href="/"><img width="150" src="~/cahanmotors/images/cahanwhite.png" alt="" title="Boxcar"></a>
+            <header class="boxcar-header header-style-v9">
+                <div class="header-inner">
+                    <div class="inner-container">
+                        <!-- Main box -->
+                        <div class="c-box">
+                            <div class="logo st-logo">
+                                <a href="/"><img width="150" src="~/cahanmotors/images/cahanwhite.png" alt="" title="Boxcar"></a>
+                            </div>
+                            <div class="right-box">
+                                <div class="nav-out-bar">
+                                    <nav class="nav main-menu">
+                                        <ul class="navigation" id="navbar">
+                                            <li><a href="/">Ana səhifə</a></li>
+                                            <li class="current-dropdown current">
+                                                <span>
+                                                    Haqqımızda <i class="fa-solid fa-angle-down"></i>
+                                                </span>
+                                                <ul class="dropdown">
+                                                    <li><a href="/haqqimizda">Brendlər haqqında</a></li>
+                                                    <li><a href="/sinaq">Sınaq yürüşü</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="/modeller">Modellər</a></li>
+                                            <li><a href="/bloq">Xəbərlər</a></li>
+                                            <li><a href="/elaqe">Bizimlə əlaqə</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+
+                                <div class="mobile-navigation">
+                                    <a href="#nav-mobile" title="">
+                                        <svg width="22" height="11" viewBox="0 0 22 11" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="22" height="2" fill="white" />
+                                            <rect y="9" width="22" height="2" fill="white" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Mobile Menu  -->
+                    </div>
                 </div>
-                <div class="right-box">
-                    <div class="nav-out-bar">
-                        <nav class="nav main-menu">
-                            <ul class="navigation" id="navbar">
-                                <li><a href="/">Ana səhifə</a></li>
-                                <li class="current-dropdown current">
-                                    <span>
-                                        Haqqımızda <i class="fa-solid fa-angle-down"></i>
-                                    </span>
-                                    <ul class="dropdown">
-                                        <li><a href="/sinaq">Sınaq yürüşü</a></li>
+
+                <div id="nav-mobile"></div>
+            </header>
+        }
+        else
+        {
+            <header class="boxcar-header header-style-v1 style-two inner-header cus-style-1">
+                <div class="header-inner">
+                    <div class="inner-container">
+                        <!-- Main box -->
+                        <div class="c-box">
+                            <div class="logo-inner">
+                                <div class="logo">
+                                    <a href="/">
+                                        <img src="~/cahanmotors/images/cahanwhite.png" alt="Cahanmotors logo"
+                                             title="Cahanmotors logo">
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!--Nav Box-->
+                            <div class="nav-out-bar">
+                                <nav class="nav main-menu">
+                                    <ul class="navigation" id="navbar">
+                                        <li><a href="/">Ana səhifə</a></li>
+                                        <li class="current-dropdown current">
+                                            <span>
+                                                Haqqımızda <i class="fa-solid fa-angle-down"></i>
+                                            </span>
+                                            <ul class="dropdown">
+                                                <li><a href="/haqqimizda">Brendlər haqqında</a></li>
+                                                <li><a href="/sinaq">Sınaq yürüşü</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="/modeller">Modellər</a></li>
+                                        <li><a href="/bloq">Xəbərlər</a></li>
+                                        <li><a href="/elaqe">Bizimlə əlaqə</a></li>
                                     </ul>
-                                </li>
-                                <li><a href="/modeller">Modellər</a></li>
-                                <li><a href="/bloq">Xəbərlər</a></li>
-                                <li><a href="/elaqe">Bizimlə əlaqə</a></li>
-                            </ul>
-                        </nav>
-                    </div>
+                                </nav>
+                                <!-- Main Menu End-->
+                            </div>
 
-                    <div class="mobile-navigation">
-                        <a href="#nav-mobile" title="">
-                            <svg width="22" height="11" viewBox="0 0 22 11" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <rect width="22" height="2" fill="white" />
-                                <rect y="9" width="22" height="2" fill="white" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <!-- Mobile Menu  -->
-        </div>
-    </div>
-
-    <div id="nav-mobile"></div>
-</header> }
-else
-{
-<header class="boxcar-header header-style-v1 style-two inner-header cus-style-1">
-    <div class="header-inner">
-        <div class="inner-container">
-            <!-- Main box -->
-            <div class="c-box">
-                <div class="logo-inner">
-                    <div class="logo">
-                        <a href="/">
-                            <img src="~/cahanmotors/images/cahanwhite.png" alt="Cahanmotors logo"
-                                 title="Cahanmotors logo">
-                        </a>
+                            <div class="right-box">
+                                <div class="mobile-navigation">
+                                    <a href="#nav-mobile" title="">
+                                        <svg width="22" height="11" viewBox="0 0 22 11" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="22" height="2" fill="white" />
+                                            <rect y="9" width="22" height="2" fill="white" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Mobile Menu  -->
                     </div>
                 </div>
+                <!-- Header Search -->
+                <div class="search-popup">
+                    <span class="search-back-drop"></span>
+                    <button class="close-search"><span class="fa fa-times"></span></button>
 
-                <!--Nav Box-->
-                <div class="nav-out-bar">
-                    <nav class="nav main-menu">
-                        <ul class="navigation" id="navbar">
-                            <li><a href="/">Ana səhifə</a></li>
-                            <li class="current-dropdown current">
-                                <span>
-                                    Haqqımızda <i class="fa-solid fa-angle-down"></i>
-                                </span>
-                                <ul class="dropdown">
-                                    <li><a href="/sinaq">Sınaq yürüşü</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="/modeller">Modellər</a></li>
-                            <li><a href="/bloq">Xəbərlər</a></li>
-                            <li><a href="/elaqe">Bizimlə əlaqə</a></li>
-                        </ul>
-                    </nav>
-                    <!-- Main Menu End-->
-                </div>
-
-                <div class="right-box">
-                    <div class="mobile-navigation">
-                        <a href="#nav-mobile" title="">
-                            <svg width="22" height="11" viewBox="0 0 22 11" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <rect width="22" height="2" fill="white" />
-                                <rect y="9" width="22" height="2" fill="white" />
-                            </svg>
-                        </a>
+                    <div class="search-inner">
+                        <form method="post" action="https://creativelayers.net/themes/boxcar-html/index.html">
+                            <div class="form-group">
+                                <input type="search" name="search-field" value="" placeholder="Search..." required="">
+                                <button type="submit"><i class="fa fa-search"></i></button>
+                            </div>
+                        </form>
                     </div>
                 </div>
-            </div>
-            <!-- Mobile Menu  -->
-        </div>
-    </div>
-    <!-- Header Search -->
-    <div class="search-popup">
-        <span class="search-back-drop"></span>
-        <button class="close-search"><span class="fa fa-times"></span></button>
+                <!-- End Header Search -->
 
-        <div class="search-inner">
-            <form method="post" action="https://creativelayers.net/themes/boxcar-html/index.html">
-                <div class="form-group">
-                    <input type="search" name="search-field" value="" placeholder="Search..." required="">
-                    <button type="submit"><i class="fa fa-search"></i></button>
-                </div>
-            </form>
-        </div>
-    </div>
-    <!-- End Header Search -->
-
-    <div id="nav-mobile"></div>
-</header>}
+                <div id="nav-mobile"></div>
+            </header>
+        }
 
         <!-- End header-section -->
         <!-- Main Header-->
         <!-- End header-section -->
-
         @RenderBody()
 
         <!-- main footer -->
-    <footer class="boxcar-footer footer-style-one">
-        <div class="widgets-section">
-            <div class="boxcar-container">
-                <div class="row">
-                    <!-- Footer COlumn -->
-                    <div class="footer-column-two col-lg-9 col-md-6 col-sm-12">
-                        <div class="row">
-                            <div class="col-lg-3 col-md-6 col-sm-12">
-                                <div class="footer-widget links-widget wow fadeInUp" data-wow-delay="100ms">
-                                    <h4 class="widget-title">Salon iş saatları</h4>
-                                    <div class="widget-content">
-                                        <ul class="user-links style-two">
-                                            <li><a href="#">Bazar ertəsi: &nbsp; 09:00 – 18:00</a></li>
-                                            <li><a href="#">Çərşənbə axşamı:&nbsp; 09:00 – 18:00</a></li>
-                                            <li><a href="#">Çərşənbə:&nbsp; 09:00 – 18:00</a></li>
-                                            <li><a href="#">Cümə axşamı:&nbsp; 09:00 – 18:00</a></li>
-                                            <li><a href="#">Cümə:&nbsp; 09:00 – 18:00</a></li>
-                                            <li><a href="#">Şənbə:&nbsp; 09:00 – 17:00</a></li>
-                                            <li><a href="#">Bazar:&nbsp; 09:00 – 17:00</a></li>
-                                        </ul>
+        <footer class="boxcar-footer footer-style-one">
+            <div class="widgets-section">
+                <div class="boxcar-container">
+                    <div class="row">
+                        <!-- Footer COlumn -->
+                        <div class="footer-column-two col-lg-9 col-md-6 col-sm-12">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-6 col-sm-12">
+                                    <div class="footer-widget links-widget wow fadeInUp" data-wow-delay="100ms">
+                                        <h4 class="widget-title">Salon iş saatları</h4>
+                                        <div class="widget-content">
+                                            <ul class="user-links style-two">
+                                                <li><a href="#">Bazar ertəsi: &nbsp; 09:00 – 18:00</a></li>
+                                                <li><a href="#">Çərşənbə axşamı:&nbsp; 09:00 – 18:00</a></li>
+                                                <li><a href="#">Çərşənbə:&nbsp; 09:00 – 18:00</a></li>
+                                                <li><a href="#">Cümə axşamı:&nbsp; 09:00 – 18:00</a></li>
+                                                <li><a href="#">Cümə:&nbsp; 09:00 – 18:00</a></li>
+                                                <li><a href="#">Şənbə:&nbsp; 09:00 – 17:00</a></li>
+                                                <li><a href="#">Bazar:&nbsp; 09:00 – 17:00</a></li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-12">
-                                <div class="footer-widget links-widget wow fadeInUp" data-wow-delay="100ms">
-                                    <h4 class="widget-title">Servis Mərkəzi iş saatları</h4>
-                                    <div class="widget-content">
-                                        <ul class="user-links style-two">
-                                            <li><a href="#">Bazar ertəsi:&nbsp; 09:00 – 18:00</a></li>
-                                            <li><a href="#">Çərşənbə axşamı:&nbsp; 09:00 – 18:00</a></li>
-                                            <li><a href="#">Çərşənbə:&nbsp; 09:00 – 18:00</a></li>
-                                            <li><a href="#">Cümə axşamı:&nbsp; 09:00 – 18:00</a></li>
-                                            <li><a href="#">Cümə:&nbsp; 09:00 – 18:00</a></li>
-                                            <li><a href="#">Şənbə:&nbsp; 09:00 – 18:00</a></li>
-                                            <li><a href="#">Bazar:&nbsp; Qeyri iş günü</a></li>
-                                        </ul>
+                                <div class="col-lg-3 col-md-6 col-sm-12">
+                                    <div class="footer-widget links-widget wow fadeInUp" data-wow-delay="100ms">
+                                        <h4 class="widget-title">Servis Mərkəzi iş saatları</h4>
+                                        <div class="widget-content">
+                                            <ul class="user-links style-two">
+                                                <li><a href="#">Bazar ertəsi:&nbsp; 09:00 – 18:00</a></li>
+                                                <li><a href="#">Çərşənbə axşamı:&nbsp; 09:00 – 18:00</a></li>
+                                                <li><a href="#">Çərşənbə:&nbsp; 09:00 – 18:00</a></li>
+                                                <li><a href="#">Cümə axşamı:&nbsp; 09:00 – 18:00</a></li>
+                                                <li><a href="#">Cümə:&nbsp; 09:00 – 18:00</a></li>
+                                                <li><a href="#">Şənbə:&nbsp; 09:00 – 18:00</a></li>
+                                                <li><a href="#">Bazar:&nbsp; Qeyri iş günü</a></li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-12">
-                                <div class="footer-widget links-widget wow fadeInUp">
-                                    <h4 class="widget-title">Ünvan</h4>
-                                    <div class="widget-content">
-                                        <ul class="user-links style-two">
-                                            <li><a href="#">@websiteInfo.Location</a></li>
-                                            <li><a href="#">Salon - @websiteInfo.Phone</a></li>
-                                            <li><a href="#">Servis - @websiteInfo.Phone</a></li>
-                                        </ul>
+                                <div class="col-lg-4 col-md-6 col-sm-12">
+                                    <div class="footer-widget links-widget wow fadeInUp">
+                                        <h4 class="widget-title">Ünvan</h4>
+                                        <div class="widget-content">
+                                            <ul class="user-links style-two">
+                                                <li><a href="#">@websiteInfo.Location</a></li>
+                                                <li><a href="#">Salon - @websiteInfo.Phone</a></li>
+                                                <li><a href="#">Servis - @websiteInfo.Phone</a></li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- footer column -->
-                    <div class="footer-column col-lg-3 col-md-6 col-sm-12">
-                        <div class="footer-widget links-widget">
-                            <h4 class="widget-title">Bizi izləyin</h4>
-                            <div class="widget-content" style="color: white;">
-                                <ul class="user-links style-two">
-                                    <li><i class="fab fa-instagram"></i>&nbsp;<a href="@websiteInfo.Facebook">Bestune</a></li>
-                                    <li><i class="fab fa-instagram"></i>&nbsp;<a href="@websiteInfo.Youtube">Hongqi</a></li>
-                                    <li><i class="fab fa-instagram"></i>&nbsp;<a href="@websiteInfo.Instagram">Maple</a></li>
-                                    <li><i class="fab fa-instagram"></i>&nbsp;<a href="@websiteInfo.Instagram2">Opel</a></li>
-                                </ul>
+                        <!-- footer column -->
+                        <div class="footer-column col-lg-3 col-md-6 col-sm-12">
+                            <div class="footer-widget links-widget">
+                                <h4 class="widget-title">Bizi izləyin</h4>
+                                <div class="widget-content" style="color: white;">
+                                    <ul class="user-links style-two">
+                                        <li><i class="fab fa-instagram"></i>&nbsp;<a href="@websiteInfo.Facebook">Bestune</a></li>
+                                        <li><i class="fab fa-instagram"></i>&nbsp;<a href="@websiteInfo.Youtube">Hongqi</a></li>
+                                        <li><i class="fab fa-instagram"></i>&nbsp;<a href="@websiteInfo.Instagram">Maple</a></li>
+                                        <li><i class="fab fa-instagram"></i>&nbsp;<a href="@websiteInfo.Instagram2">Opel</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!--  Footer Bottom -->
-        <div class="footer-bottom">
-            <div class="boxcar-container">
-                <div class="inner-container">
-                    <div class="copyright-text wow fadeInUp">
-                        © <a href="#">
-                            2024 CAHAN MOTORS |
-                            www.cahanmotors.az
-                        </a>
+            <!--  Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="boxcar-container">
+                    <div class="inner-container">
+                        <div class="copyright-text wow fadeInUp">
+                            © <a href="#">
+                                2024 CAHAN MOTORS |
+                                www.cahanmotors.az
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </footer>
+        </footer>
         <!-- End boxcar-footer -->
 
     </div>
